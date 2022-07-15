@@ -7,13 +7,12 @@ const googleIt = require('google-it')
 const { shortText } = require("limit-text-js")
 const Canvas = require('canvas')
 const TinyURL = require('tinyurl');
-const shortUrl = require("node-url-shortener");
 const { EmojiAPI } = require("emoji-api");
 const emoji = new EmojiAPI();
 var isUrl = require("is-url")
 const BitlyClient = require('bitly').BitlyClient
 const canvasGif = require('canvas-gif')
-const { convertStringToNumber } = require('convert-string-to-number'); // named export
+const { convertStringToNumber } = require('convert-string-to-number'); 
 const isImageURL = require('image-url-validator').default
 const {fetchJson, runtime, getBuffer} = require('../lib/myfunc')
 const Canvacord = require("canvacord");
@@ -1512,24 +1511,6 @@ can.context.drawImage(bg, 320, 0, 709, 360)
 })
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Link Short  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
-
-router.get('/linkshort/cdpt', async (req, res, next) => {
-	var link = req.query.link
-	if (!link ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter link"})  
-
-	var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
-
-	shortUrl.short(link, function (err, url) {
-		res.json({
-			status: true,
-			creator: `${creator}`,
-			result: url
-			})
-			if (err)
-		 res.json(loghandler.error)
-	})
-})
 
 router.get('/linkshort/tinyurl', async (req, res, next) => {
 	var link = req.query.link
