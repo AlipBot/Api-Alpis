@@ -1,5 +1,5 @@
 {
-  "name": "rest-api-by-alip",
+  "name": "rest-api-alpis",
   "version": "2.0.0",
   "description": "make by alip free rest api",
   "main": "index.js",
@@ -15,19 +15,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Azex229/RESTAPI.git"
+    "url": "git+https://github.com/AlipBot/Api-Alpis.git"
   },
   "keywords": [
     "restapi",
     "bot",
     "whatsaap"
   ],
-  "author": "Alip",
+  "author": "AlipBot",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Azex229/RESTAPI/issues"
+    "url": "https://github.com/AlipBot/Api-Alpis/issues"
   },
-  "homepage": "https://github.com/Azex229/RESTAPI#readme",
+  "homepage": "https://github.com/AlipBot/Api-Alpis#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bitly": "^7.1.2",
