@@ -34,6 +34,8 @@ CONNECT PROJECTS GITHUB YANG KALIAN FORK TADI
 LALU TEKAN
 Deploy
 
+ [`Tutorial In Youtube`](https://youtu.be/QZ2FWTur9WA)<br>
+
 * # ``Cara On 24 Jam``
 
 [`Klik Sini`](https://kaffeine.herokuapp.com)<br>
