@@ -34,6 +34,7 @@ CONNECT PROJECTS GITHUB YANG KALIAN FORK TADI
 LALU TEKAN
 Deploy
 
+<a href="https://youtu.be/QZ2FWTur9WA"><img src="https://img.youtube.com/vi/QZ2FWTur9WA/sddefault.jpg" alt="">
  [`Tutorial In Youtube`](https://youtu.be/QZ2FWTur9WA)<br>
 
 * # ``Cara On 24 Jam``
