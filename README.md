@@ -23,7 +23,7 @@
 * ## TUTORIAL 📌
 
 Forks Github Ini
- [`Fork Project`](https://github.com/AlipBot/api-alpis/fork)<br>
+ [`Klik Sini Untuk Fork Project`](https://github.com/AlipBot/api-alpis/fork)<br>
 
 DEPLOY TO HEROKU
 
@@ -32,9 +32,12 @@ DEPLOY TO HEROKU
 CONNECT HEROKU TO GITHUB DAN
 CONNECT PROJECTS GITHUB YANG KALIAN FORK TADI
 LALU TEKAN
-
-
 Deploy
+
+* # ``Cara On 24 Jam``
+
+[`Klik Sini`](https://kaffeine.herokuapp.com)<br>
+add website kamu
 
 * ## SETTING ⚙️
 File Setting ``setting.js``
@@ -59,10 +62,12 @@ File Setting ``setting.js``
 | Tools  |✔️|
 | Islamic  |✔️|
 
-## ``Credit 💳 Script``
+<img src="https://telegra.ph/file/1cbc7e659b35a053bf25f.png" width="150" height="150">
 
+``Halal Rest API``
+
+## ``Credit 💳 Script``
 
 <img src="https://avatars.githubusercontent.com/AlipBot" width="200" height="200">
 
 [`AlipBot`](https://github.com/AlipBot)<br>
-
