@@ -982,15 +982,9 @@ router.get('/randomvideo/asupan', async (req, res, next) => {
 
 	let sts = await fetchJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
 	let random = sts[Math.floor(Math.random() * sts.length)]
-
-	res.json({
-	status: true,
-	creator: `${creator}`,
-		result: {
-			video: random,
-					}
-	})
-
+        var result = await getBuffer(random)
+	res.set({'Content-Type': 'video/mp4'})
+	res.send(result)
 })
 // Game
 
