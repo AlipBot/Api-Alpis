@@ -963,9 +963,11 @@ router.get('/randomgambar/coffee', async (req, res, next) => {
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
 })
-router.get('/randomgambar/msts', async (req, res, next) => {
-	let sts = await fetchJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
-	let random = sts[Math.floor(Math.random() * sts.length)]
+router.get('/randomvideo/msts', async (req, res, next) => {
+
+	let sts = await axios('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json').data
+	let random = sts.result[Math.floor(Math.random() * sts.result.length)]
+
 	res.json({
 	status: true,
 	creator: `${creator}`,
@@ -973,8 +975,8 @@ router.get('/randomgambar/msts', async (req, res, next) => {
 			video: random,
 					}
 	})
-})
 
+})
 // Game
 
 router.get('/game/tembakgambar', async (req, res, next) => {
