@@ -966,8 +966,8 @@ router.get('/randomgambar/coffee', async (req, res, next) => {
 })
 router.get('/randomvideo/msts', async (req, res, next) => {
 
-	let sts = await axios('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json').data
-	let random = sts.result[Math.floor(Math.random() * sts.result.length)]
+	let sts = await fetchJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
+	let random = sts.result[0][Math.floor(Math.random() * sts.result[0].length)]
 
 	res.json({
 	status: true,
