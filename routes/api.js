@@ -963,6 +963,17 @@ router.get('/randomgambar/coffee', async (req, res, next) => {
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
 })
+router.get('/randomgambar/msts', async (req, res, next) => {
+	let sts = await fetchJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
+	let random = sts[Math.floor(Math.random() * sts.length)]
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: {
+			video: random,
+					}
+	})
+})
 
 // Game
 
