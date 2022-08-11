@@ -1,6 +1,6 @@
 require('../settings')
 const express = require('express')
-const axios = require('axios')
+//const axios = require('axios')
 const translate = require('translate-google-api')
 const alip = require("../lib/listdl")
 const textto = require('soundoftext-js')
@@ -968,6 +968,20 @@ router.get('/randomvideo/msts', async (req, res, next) => {
 
 	let sts = await axios('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json').data
 	let random = sts.result[Math.floor(Math.random() * sts.result.length)]
+
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: {
+			video: random,
+					}
+	})
+
+})
+router.get('/randomvideo/asupan', async (req, res, next) => {
+
+	let sts = await fetchJson('https://raw.githubusercontent.com/mask-sir/api.mask-ser/main/Sts.json')
+	let random = sts[Math.floor(Math.random() * sts.length)]
 
 	res.json({
 	status: true,
