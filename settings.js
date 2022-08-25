@@ -17,7 +17,7 @@
 //_______________________ ┏  Setting  ┓ _______________________\\
 
 // Name Creator
-creator = 'MrclNotWibu'
+creator = 'NansBotz'
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
