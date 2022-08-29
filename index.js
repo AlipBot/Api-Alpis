@@ -44,7 +44,6 @@ app.use(function (req, res, next) {
   })
 
 app.use(function (err, req, res, next) {
-	
 	res.sendFile(__path + '/view/404.html')
   })
 

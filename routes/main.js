@@ -38,5 +38,4 @@ router.get('/docs', (req, res) => {
     res.sendFile(__path + '/view/docs.html')
 })
 
-
 module.exports = router
