@@ -33,7 +33,7 @@
     "bitly": "^7.1.2",
     "canvacord": "^5.3.0",
     "canvas": "^2.9.1",
-    "canvas-gif": "^1.0.3",
+    "canvas-gif": "github:AlipBot/canvas-gif-attp",
     "cheerio": "^1.0.0-rc.11",
     "convert-string-to-number": "^1.0.3",
     "cookie": "^0.5.0",
