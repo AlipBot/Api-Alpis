@@ -42,10 +42,6 @@ Buat Email SMTP
 
 * ## STEP 4
 
-  Kalau nak Setting Pergi ke File setting
-
-* ## STEP 5
-
  Buat Account Render Klick Di bawah
 
 [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy) 
