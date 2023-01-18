@@ -73,7 +73,7 @@ sendemail = 'Email SMTP'
 fromsendemail = 'EMAIL SMTP sama dengan atas'
 sendpwmail = "Password EMAIL SMTP"
 
-GET APIKEY RECAPTCHA From https://www.google.com/recaptcha/about/ or https://www.google.com/recaptcha/admin
+GET APIKEY RECAPTCHA From https://www.google.com/recaptcha/admin/create
 
 recaptcha_key_1 = 'Key recaptchaV1 Kamu'
 recaptcha_key_2 = 'Key recaptchaV2 Kamu'
