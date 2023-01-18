@@ -153,7 +153,7 @@ File Setting ``setting.js``
 
 * ## Hasil Deploy🌍
 
-[`alpis.eu.org `](alpis.eu.org)<br>
+[`alpis.eu.org `](https://alpis.eu.org)<br>
 
 
 <img src="https://telegra.ph/file/1cbc7e659b35a053bf25f.png" width="150" height="150">
