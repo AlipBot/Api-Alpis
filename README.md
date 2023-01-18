@@ -44,7 +44,7 @@ Buat Email SMTP
 
  Buat Account Render Klick Di bawah
 
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy) 
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://dashboard.render.com/) 
 
 Buat Web Service Baru
   
