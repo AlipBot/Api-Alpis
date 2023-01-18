@@ -87,8 +87,14 @@ recaptcha_key_2 = 'Key recaptchaV2 Kamu'
 Lepastu 
   
 Tekan Create web service
-  
-SIAPP
+
+lepas siap deploy add domain website kamu ke file setting dan buat key recaptcha kamu 
+copy paste kat Environment Variable di
+
+```
+recaptcha_key_1 = 'Key recaptchaV1 Kamu'
+recaptcha_key_2 = 'Key recaptchaV2 Kamu'
+```
   
 * ## Tutorial Youtube [COMMING SOON]
 
