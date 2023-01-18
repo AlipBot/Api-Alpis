@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap" rel="stylesheet">
+    <!-- Bootstrap CDN  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: 'Recursive', sans-serif;
+            font-size: larger;
+        }
+
+        .customborder {
+            border-radius: 2%;
+            border: 2px solid #E95420;
+        }
+
+        input {
+          width: 100%;
+          padding: 12px;
+          border: 1px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+          margin-top: 6px;
+          margin-bottom: 16px;
+        }
+        
+
+        input[type=submit] {
+          background-color: #04AA6D;
+          color: white;
+        }
+
+        
+        #message {
+          display:none;
+          color: #000;
+          position: relative;
+          padding: 20px;
+          margin-top: 10px;
+        }
+        
+        #message p {
+          padding: 10px 35px;
+          font-size: 18px;
+        }
+
+        #messageconfirmpassword {
+          display:none;
+          color: #000;
+          position: relative;
+          padding: 20px;
+          margin-top: 10px;
+        }
+        
+        #messageconfirmpassword p {
+          padding: 10px 35px;
+          font-size: 18px;
+        }
+
+
+        .valid {
+          color: green;
+        }
+        
+        .valid:before {
+          position: relative;
+          left: -35px;
+          content: "✔";
+        }
+        
+        .invalid {
+          color: red;
+        }
+        
+        .invalid:before {
+          position: relative;
+          left: -35px;
+          content: "✖";
+        }
+        
+.bgrid {
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bgrid {
+    padding: 0 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bgrid {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bgrid {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .bgrid {
+    padding: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #727272; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #727272; 
+}
+    </style>
+</head>
+
+<body>
+
+
+
+
+    <div class="container">
+        <h1 class="text-center p-3">Register</h1>
+        <div style="margin: 0 auto;" class="col-12 col-md-6 col-lg-5 p-5 customborder">
+
+            <% if(typeof err !='undefined' ){ %>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong> Error </strong>
+                    <%= err %>.
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                <% } %>
+
+                <% if( error_messages !="" ){ %>
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong> Error </strong>
+                        <%= error_messages %>.
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <% } %>
+          
+                    <% if( success_messages !="" ){ %>
+                      <div class="alert alert-success alert-dismissible fade show" role="alert">
+                          <strong> Success</strong>
+                          <%= success_messages %>.
+                              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                      </div>
+                      <% } %>
+                      
+                    <form action="/signup" method="POST">
+                        <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                        <div class="mb-3">
+                            <label for="email">Enter Your Email</label>
+                            <input type="email" class="form-control form-control-lg" name="email" id="email"
+                                autocomplete="off" placeholder="Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username">Choose A Username</label>
+                            <input type="text" class="form-control form-control-lg" name="username" id="username"
+                                autocomplete="off" placeholder="Username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password">Choose A Password</label>
+                            <input type="password" class="form-control form-control-lg" name="password" id="password"
+                            autocomplete="off" placeholder="Confirm Password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" onkeyup='check();' required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmpassword">Confirm Your Password</label>
+                            <input type="password" class="form-control form-control-lg" name="confirmpassword"
+                                id="confirmpassword" autocomplete="off" placeholder="Confirm Password"  onkeyup='check();' required>
+                        </div>
+                        <div id="message">
+                          <p id="letter" class="invalid"><b>lowercase</b></p>
+                          <p id="capital" class="invalid"><b>capital (uppercase)</b></p>
+                          <p id="number" class="invalid"><b>number</b></p>
+                          <p id="length" class="invalid"><b>8 characters</b></p>
+                        </div>
+                        <div id="messageconfirmpassword">
+                          <p id="samepw" class="invalid"><b>Password Same</b></p>
+                        </div>
+                        <div class="mb-3"> 
+                            <center> <%- recaptcha %> </center>
+                          </div>
+                        <div class="d-grid gap-3 mb-3">
+                            <input type="submit" class="btn btn-lg btn-outline-primary" value="Register">
+               
+                        </div>
+                        <p>Already Registered ? <a class="card-link" href="/login">LOGIN Here</a> </p>
+                    </form>
+        </div>
+    </div>
+
+    <script>
+        var myInput = document.getElementById("password");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
+        var confirmpw = document.getElementById("confirmpassword");
+        var same = document.getElementById("samepw");
+
+
+        myInput.onfocus = function() {
+          document.getElementById("message").style.display = "block";
+        }
+        myInput.onblur = function() {
+          document.getElementById("message").style.display = "none";
+        }
+        myInput.onkeyup = function() {
+          var lowerCaseLetters = /[a-z]/g;
+          if(myInput.value.match(lowerCaseLetters)) {  
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
+          }
+          var upperCaseLetters = /[A-Z]/g;
+          if(myInput.value.match(upperCaseLetters)) {  
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
+          }
+          var numbers = /[0-9]/g;
+          if(myInput.value.match(numbers)) {  
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
+          }
+          if(myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+          if (document.getElementById('password').value ==
+        document.getElementById('confirmpassword').value) {
+
+        same.classList.remove("invalid");
+        same.classList.add("valid");
+        } else {
+        same.classList.remove("valid");
+        same.classList.add("invalid");
+    }
+        }
+
+        confirmpw.onfocus = function() {
+          document.getElementById("messageconfirmpassword").style.display = "block";
+        }
+        confirmpw.onblur = function() {
+          document.getElementById("messageconfirmpassword").style.display = "none";
+        }
+
+        var check = function() {
+      if (document.getElementById('password').value ==
+          document.getElementById('confirmpassword').value) {
+
+          same.classList.remove("invalid");
+          same.classList.add("valid");
+      } else {
+          same.classList.remove("valid");
+          same.classList.add("invalid");
+      }
+  }
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

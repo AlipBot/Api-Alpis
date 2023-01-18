@@ -12,30 +12,62 @@ __path = process.cwd()
 //   
 //_______________________ ┏ Make By AlipBot ┓ _______________________\\
 
-var express = require('express');
-var router = express.Router();
-const { runtime,fetchJson } = require('../lib/myfunc')
+//―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
-router.get('/statistic', async (req, res, next) => {
+require('../settings');
+const express = require('express');
+const router = express.Router();
+const passport = require('passport');
+require('../controller/passportLocal')(passport);
+const authRoutes = require('./auth');
+const apiRoutes = require('./api')
+const dataweb = require('../model/DataWeb');
+const User = require('../model/user');
 
-	let hits = await fetchJson('https://api.countapi.xyz/hit/rest-api-alip.herokuapp.com/visitor')
+//_______________________ ┏ Function ┓ _______________________\\
 
-	res.json({
-	status: true,
-	creator: `${creator}`,
-	runtime: runtime(process.uptime()),
-	visitor: hits.value,
+function checkAuth(req, res, next) {
+    if (req.isAuthenticated()) {
+        res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, post-check=0, pre-check=0');
+        next();
+    } else {
+        req.flash('error_messages', "Please Login to continue !");
+        res.redirect('/login');
+    }
+}
 
-	})
+async function getApikey(id) {
+    let limit = await dataweb.findOne();
+    let users = await User.findOne({_id: id})
+    return {apikey: users.apikey, username: users.username, checklimit: users.limitApikey, isVerified : users.isVerified, RequestToday: limit.RequestToday};
+}
 
-})
+
+//_______________________ ┏ Router ┓ _______________________\\
 
 router.get('/', (req, res) => {
-    res.sendFile(__path + '/view/home.html')
-})
+        res.render("home");
+});
 
-router.get('/docs', (req, res) => {
-    res.sendFile(__path + '/view/docs.html')
-})
+router.get('/docs',  checkAuth, async (req, res) => {
+  let getinfo =  await getApikey(req.user.id)
+  let { apikey, username, checklimit, isVerified , RequestToday } = getinfo
+    res.render("docs", { username: username, verified: isVerified, apikey: apikey, limit: checklimit , RequestToday: RequestToday });
+    
+});
 
-module.exports = router
+
+router.get("/logout", (req, res) => {
+    req.logout(req.user, err => {
+      if(err) return next(err);
+      res.redirect("/login");
+    });
+  });
+
+
+
+router.use(authRoutes);
+router.use(apiRoutes);
+module.exports = router;
+
+

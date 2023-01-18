@@ -25,7 +25,7 @@ a:focus {
 }
 
 #wrapper #content-wrapper {
-    background-color: #0B1622;
+    background-color: #121212;
     width: 100%;
     overflow-x: hidden
 }
@@ -35,6 +35,48 @@ a:focus {
     -ms-flex: 1 0 auto;
     flex: 1 0 auto
 }
+
+
+.bgrid {
+    padding: 0 20px;
+  }
+  
+  @media only screen and (max-width: 1024px) {
+    .bgrid {
+      padding: 0 18px;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .bgrid {
+      padding: 0 15px;
+    }
+  }
+  
+  @media only screen and (max-width: 600px) {
+    .bgrid {
+      padding: 0 10px;
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+    .bgrid {
+      padding: 0;
+    }
+  }
+  
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #727272; 
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #727272; 
+  }
 
 .container,
 .container-fluid,
@@ -303,7 +345,7 @@ a:focus {
 }
 
 .border-left-primary {
-    border-left: .25rem solid #3f51b5!important
+    border-left: .25rem solid #20cde4!important
 }
 
 .border-bottom-primary {
@@ -573,7 +615,7 @@ a:focus {
 }
 
 .topbar.navbar-light .navbar-nav .nav-item .nav-link {
-    color: #D3D5F3;
+    color: #ffffff;
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out
 }
@@ -589,13 +631,13 @@ a:focus {
 }
 
 .bg-navbar {
-    background-color: #152232
+    background-color: #181818
 }
 
 .sidebar {
     min-height: 100vh;
     width: 14rem!important;
-    background-color: #152232!important;
+    background-color: #181818!important;
     -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15)!important;
     box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15)!important;
     z-index: 0
@@ -690,7 +732,7 @@ a:focus {
     padding: .5rem 1.5rem;
     font-weight: 800;
     font-size: .80rem;
-    color: #b7b9cc
+    color: #ffffff
 }
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item,
@@ -706,7 +748,7 @@ a:focus {
 
 .sidebar .nav-item .collapse .collapse-inner .collapse-item:hover,
 .sidebar .nav-item .collapsing .collapse-inner .collapse-item:hover {
-    background-color: #9A77FD;
+    background-color: #181818;
     transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out
 }
@@ -827,7 +869,7 @@ a:focus {
     -webkit-box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
     box-shadow: 0 .15rem 1.75rem 0 rgba(58, 59, 69, .15);
     border-radius: .35rem;
-    background-color: #152232;
+    background-color: #181818;
 }
 
 .sidebar.toggled .nav-item .collapsing {
@@ -1053,8 +1095,8 @@ a:focus {
 }
 
 .sidebar-light .sidebar-brand {
-    color: #d3d5f3;
-    background-color: #152232
+    color: #ffffff;
+    background-color: #181818;
 }
 
 .sidebar-light hr.sidebar-divider {
@@ -1062,11 +1104,11 @@ a:focus {
 }
 
 .sidebar-light .sidebar-heading {
-    color: #b7b9cc
+    color: #ffffff
 }
 
 .sidebar-light .nav-item .nav-link {
-    color: #9e9e9e;
+    color: #ffffff;
     font-weight: 600;
 }
 

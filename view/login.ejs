@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <!-- Font  -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Recursive:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Bootstrap CDN  -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <title>Login</title>
+
+    <style>
+      body {
+        font-family: "Recursive", sans-serif;
+        font-size: larger;
+      }
+
+      .customborder {
+        border-radius: 2%;
+        border: 2px solid #e95420;
+      }
+
+      
+.bgrid {
+  padding: 0 20px;
+}
+
+@media only screen and (max-width: 1024px) {
+  .bgrid {
+    padding: 0 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bgrid {
+    padding: 0 15px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .bgrid {
+    padding: 0 10px;
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .bgrid {
+    padding: 0;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+::-webkit-scrollbar-thumb {
+  background: #727272; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #727272; 
+}
+    </style>
+  </head>
+
+  <body>
+   
+
+    <div class="container">
+      <h1 class="text-center p-3">Login</h1>
+      <div
+        style="margin: 0 auto"
+        class="col-12 col-md-6 col-lg-5 p-5 customborder"
+      >
+        <% if( error !="" ){ %>
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          <strong> Error </strong>
+          <%= error %>.
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+        <% } %>
+
+
+        <% if( error_messages !="" ){ %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong> Error </strong>
+              <%= error_messages %>.
+                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+          <% } %>
+
+          <% if( success_messages !="" ){ %>
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong> Success</strong>
+                <%= success_messages %>.
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <% } %>
+
+        <form action="/login" , method="POST">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
+          <div class="mb-3">
+            <label for="username">Enter Your Email</label>
+            <input
+              type="email"
+              class="form-control form-control-lg"
+              name="email"
+              id="username"
+              autocomplete="off"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password">Enter Your Password</label>
+            <input
+              type="password"
+              class="form-control form-control-lg"
+              name="password"
+              id="password"
+              autocomplete="off"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="mb-3"> 
+          <center> <%- recaptcha %> </center>
+        </div>
+          <div class="d-grid gap-3 mb-3">
+            <input
+              type="submit"
+              class="btn btn-lg btn-block btn-outline-primary"
+              value="Login"
+            />
+            
+            
+          </div>
+          <p>New Here ? <a class="card-link" href="/signup">Register Now</a></p>
+          <!-- added a new button for redirecting to forgot password page  -->
+          <p>
+            <a class="card-link" href="/forgot-password"
+              >Forgot Password</a
+            >
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    
+  </body>
+</html>
