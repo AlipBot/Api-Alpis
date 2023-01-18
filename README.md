@@ -56,7 +56,16 @@ Connect Account Github
   
 Connect repository Github Yang Kamu Fork Tadi
   
-Start Command Tulis npm start
+Build Command Paste
+```
+npm install
+```
+
+Start Command Paste
+
+```
+npm start
+```
   
 Klick Advanced Dan
   
