@@ -92,11 +92,11 @@ recaptcha_key_1 = 'Key recaptchaV1 Kamu'
 recaptcha_key_2 = 'Key recaptchaV2 Kamu'
 ```
   
-* ## Tutorial Youtube [COMMING SOON]
+* ## Tutorial Youtube
 
-<a href="https://youtu.be/QZ2FWTur9WA"><img src="https://img.youtube.com/vi/QZ2FWTur9WA/sddefault.jpg" alt="">
+<a href="https://youtu.be/QZ2FWTur9WA"><img src="https://img.youtube.com/vi/5K3YYuq7QoI/sddefault.jpg" alt="">
 
- [`Tutorial In Youtube`](https://youtu.be/QZ2FWTur9WA)<br>
+ [`Tutorial In Youtube`](https://youtu.be/5K3YYuq7QoI)<br>
 
 * ## SETTING ⚙️
 File Setting ``setting.js``
