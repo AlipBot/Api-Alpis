@@ -1,0 +1,22 @@
+
+run = "nix-shell build.nix"
+entrypoint = "index.js"
+
+language = "nodejs"
+
+[nix]
+channel="stable-21_11"
+
+[packager]
+language = "nodejs"
+
+[packager.features]
+packageSearch = true
+guessImports = true
+
+[languages.nodejs]
+pattern = "**/*.js"
+syntax = "nodejs"
+
+[languages.nodejs.languageServer]
+start = [ "typescript-language-server", "--stdio" ]
