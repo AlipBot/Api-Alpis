@@ -155,9 +155,11 @@ File Setting ``setting.js``
 [`alpis.eu.org `](https://alpis.eu.org)<br>
 
 
-<img src="https://telegra.ph/file/1cbc7e659b35a053bf25f.png" width="150" height="150">
+* ## Support Deploy Free
+<a href="https://replit.com/@BOT-SKYLARKSKYL/Api-Alpis-in-replit?v=1"><img src="https://telegra.ph/file/8d225f38ce1920182e313.png" width="300" height="200">
+<a href="https://dashboard.render.com"><img src="https://telegra.ph/file/6125fb68b97cdd156fc67.png" width="400" height="200">
 
-``Halal Rest API``
+
 
 ## ``Credit 💳 Script``
 
@@ -165,3 +167,6 @@ File Setting ``setting.js``
 
 [`AlipBot`](https://github.com/AlipBot)<br>
 
+<img src="https://telegra.ph/file/1cbc7e659b35a053bf25f.png" width="150" height="150">
+
+``Halal Rest API``

@@ -10,8 +10,8 @@
     "lib": "lib"
   },
   "scripts": {
-    "start": "node index.js",
-    "build": "node index.js",
+    "start": "NODE_ENV=development ./node_modules/.bin/netlify-lambda serve src",
+    "build": "NODE_ENV=production ./node_modules/.bin/netlify-lambda build src",
     "node": "nodemon index.js"
   },
   "repository": {
@@ -66,6 +66,7 @@
     "memorystore": "^1.6.7",
     "millify": "^5.0.1",
     "mongoose": "^6.8.0",
+    "netlify-lambda": "^2.0.15",
     "node-cron": "^3.0.2",
     "node-fetch": "^2.6.1",
     "nodemailer": "^6.8.0",
