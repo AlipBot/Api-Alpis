@@ -1,9 +1,9 @@
 require("./settings");
 const http = require("http");
 const app = require("./index");
-const PORT = port || 8080;
+const PORTHOST = port || 8080;
 
-http.createServer(app).listen(PORT, () => {
+http.createServer(app).listen(PORTHOST, () => {
     console.log(`
     █████╗ ██████╗ ██╗     █████╗ ██╗     ██████╗ ██╗███████╗
    ██╔══██╗██╔══██╗██║    ██╔══██╗██║     ██╔══██╗██║██╔════╝
@@ -13,6 +13,6 @@ http.createServer(app).listen(PORT, () => {
    ╚═╝  ╚═╝╚═╝     ╚═╝    ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝ V2 
 			                          @alipje29
 								 
-Server running on http://localhost:` + port)
+Server running on http://localhost:` + PORTHOST)
 console.log(`Hello ${creator}`)
 })

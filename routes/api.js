@@ -133,7 +133,7 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel|stories)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
 
 	alip.igdl(url).then(async (data) => {
-		if (!data ) return res.json(loghandler.error) 
+		if (!data ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
 		res.json({
 			status: true,

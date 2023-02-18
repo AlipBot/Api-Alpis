@@ -90,6 +90,12 @@ loghandler = {
 	    code: 403,
 	    message: '[!] Forbiden or Error, Emoji not Found',
 	    maintanied_by: `${creator}`
+	},
+    instgram: {
+	    status: false,
+	    code: 403,
+	    message: '[!] Forbiden or Error, Username tidak wujud atau account private',
+	    maintanied_by: `${creator}`
    },
     register: {
 	    status: false,

@@ -60,6 +60,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 //_______________________ ┏ Connect Database ┓ _______________________\\
 
+mongoose.set("strictQuery", false);
 mongoose
   .connect(keymongodb, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(async () => {
