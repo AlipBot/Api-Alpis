@@ -1,6 +1,7 @@
+require("./settings");
 const http = require("http");
 const app = require("./index");
-const PORT = process.env.PORT || 8080;
+const PORT = port || 8080;
 
 http.createServer(app).listen(PORT, () => {
     console.log(`
