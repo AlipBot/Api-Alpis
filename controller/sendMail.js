@@ -13,11 +13,8 @@ var smtpTransport = nodemailer.createTransport({
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏ Send Reset Email┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
-module.exports.sendResetEmail = async (email, token) => {
+module.exports.sendResetEmail = async (email, code) => {
   return new Promise(async(resolve, rejecet) => {
-
-  var url = `http://${domain}/reset-password?token=` + token;
-
   await smtpTransport.sendMail({
     from: fromsendemail,
     to: email,
@@ -156,7 +153,7 @@ module.exports.sendResetEmail = async (email, token) => {
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Menetapkan semula kata laluan</a>
+                              <a href="${code}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Menetapkan semula kata laluan</a>
                             </td>
                           </tr>
                         </table>
@@ -215,9 +212,8 @@ module.exports.sendResetEmail = async (email, token) => {
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏ Send Verify Email ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
-module.exports.sendVerifyEmail = async (email, token) => {
+module.exports.sendVerifyEmail = async (email, code) => {
   return new Promise(async(resolve, rejecet) => {
-    var url = `http://${domain}/verifyemail?token=` + token;
 
   await smtpTransport.sendMail({
     from: fromsendemail,
@@ -356,7 +352,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Sahkan E-mel</a>
+                              <a href="${code}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Sahkan E-mel</a>
                             </td>
                           </tr>
                         </table>
