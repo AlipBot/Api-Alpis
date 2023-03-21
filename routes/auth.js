@@ -181,8 +181,9 @@ router.get('/send-verification-email', checkAuth, async (req, res) => {
         res.redirect('/docs');
         }else{
          var token = crypto.randomBytes(32).toString('hex');
+         var code = `http://${req.headers.host}/reset-password?token=${token}`
         await VerifyUser({ token: token, email: req.user.email }).save();
-        var mail =await mailer.sendVerifyEmail(req.user.email, token)
+        var mail =await mailer.sendVerifyEmail(req.user.email, code)
         if(mail == 'error'){
             req.flash('error_messages','Error Please Try Again Tomorrow');
             res.redirect('/docs');
@@ -249,7 +250,8 @@ if (Cooldown) {
             
  }else{
             var token = crypto.randomBytes(32).toString('hex');
-            var mail = await mailer.sendResetEmail(email, token)
+            var code = `http://${req.headers.host}/reset-password?token=${token}`
+            var mail = await mailer.sendResetEmail(email, code)
             if(mail == 'error'){
                 req.flash('error_messages','Error Please Try Again Tomorrow');
                 res.redirect('/forgot-password');
