@@ -1,14 +1,14 @@
 //_______________________ ┏  Info  ┓ _______________________\\
 //
-//   Credit : AlipBot
-//
-//   Note
+//   Credit : HendraXD
+//   
+//   Note 
 //   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
-//
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
+//   Jangan Hapus Text ini,
+//   Yang Mau Upload Jangan Lupa Credit :),
+//   yang Tidak Menaruh Credit Kami Akan Mengambil Tindakan
+//   
+//_______________________ ┏ ©2023 HendraXD ┓ _______________________\\
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
@@ -83,7 +83,7 @@ cron.schedule(
   },
   {
     scheduled: true,
-    timezone: "Asia/Kuala_Lumpur",
+    timezone: "Asia/Jakarta",
   }
 );
 
@@ -95,7 +95,7 @@ cron.schedule(
   },
   {
     scheduled: true,
-    timezone: "Asia/Kuala_Lumpur",
+    timezone: "Asia/Jakarta",
   }
 );
 
@@ -137,4 +137,4 @@ app.use(function (err, req, res, next) {
 
 module.exports = app;
 
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
+//_______________________ ┏ Make By HendraXD ┓ _______________________\\
