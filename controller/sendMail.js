@@ -21,7 +21,7 @@ module.exports.sendResetEmail = async (email, token) => {
   await smtpTransport.sendMail({
     from: fromsendemail,
     to: email,
-    subject: "MENETAPKAN SEMULA KATA LALUAN ANDA",
+    subject: "RESET KATA SANDi",
     html: `
     <!DOCTYPE html>
     <html>
@@ -102,7 +102,7 @@ module.exports.sendResetEmail = async (email, token) => {
     <body style="background-color: #e9ecef;">
     
       <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-        A preheader is the short summary text that follows the subject line when an email is viewed in the inbox.
+        Preheader adalah teks ringkasan singkat yang mengikuti baris subjek saat email dilihat di kotak masuk.
       </div>
 
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -114,7 +114,7 @@ module.exports.sendResetEmail = async (email, token) => {
               <tr>
                 <td align="center" valign="top" style="padding: 36px 24px;">
                   <a href="https://${domain}" target="_blank" style="display: inline-block;">
-                    <img src="https://telegra.ph/file/f492065d44c897cd3836e.png" alt="Logo" border="0" width="100" style="display: block; width: 100px; max-width: 100px; min-width: 100px;">
+                    <img src="https://telegra.ph/file/22cffdfa5155c4f9ca4ec.png" alt="Logo" border="0" width="100" style="display: block; width: 100px; max-width: 100px; min-width: 100px;">
                   </a>
                 </td>
               </tr>
@@ -128,7 +128,7 @@ module.exports.sendResetEmail = async (email, token) => {
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Menetapkan Semula Kata Laluan Anda</h1>
+                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Mengatur Ulang Kata Sandi Anda</h1>
                 </td>
               </tr>
             </table>
@@ -144,7 +144,7 @@ module.exports.sendResetEmail = async (email, token) => {
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                   <p style="margin: 0;">
-                    Masalah melog masuk?<br>Menetapkan semula kata laluan anda adalah mudah.<br><br>Hanya tekan butang di bawah dan ikut arahan. Kami akan membantu anda beroperasi dalam masa yang singkat.</p>
+                    Kesulitan masuk?<br>Menyetel ulang sandi Anda itu mudah.<br><br>Cukup tekan tombol di bawah dan ikuti petunjuknya. Kami akan Membantu Anda.</p>
                 </td>
               </tr>
 
@@ -156,7 +156,7 @@ module.exports.sendResetEmail = async (email, token) => {
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Menetapkan semula kata laluan</a>
+                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Atur ulang kata sandi</a>
                             </td>
                           </tr>
                         </table>
@@ -185,7 +185,7 @@ module.exports.sendResetEmail = async (email, token) => {
     
               <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                  <p style="margin: 0;">Jika anda tidak membuat permintaan ini, sila abaikan e-mel ini..</p>
+                  <p style="margin: 0;">Jika Anda Tidak Membuat Permintaan Ini, Silakan Abaikan Email Ini.</p>
                 </td>
               </tr>
     
@@ -222,7 +222,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
   await smtpTransport.sendMail({
     from: fromsendemail,
     to: email,
-    subject: "SAHKAN EMAIL ANDA",
+    subject: "VERIFIKASI EMAIL",
     html: `
     <!DOCTYPE html>
     <html>
@@ -303,7 +303,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     <body style="background-color: #e9ecef;">
     
       <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-        Sahkan E-mel Anda Dengan klik Buton Di Bawah.
+        Verifikasi Email Anda Klik Tombol Dibawah.
       </div>
 
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -315,7 +315,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
               <tr>
                 <td align="center" valign="top" style="padding: 36px 24px;">
                   <a href="https://${domain}" target="_blank" style="display: inline-block;">
-                  <img src="https://telegra.ph/file/f492065d44c897cd3836e.png" alt="Logo" border="0" width="100" style="display: block; width: 100px; max-width: 100px; min-width: 100px;">
+                  <img src="https://telegra.ph/file/22cffdfa5155c4f9ca4ec.png" alt="Logo" border="0" width="100" style="display: block; width: 100px; max-width: 100px; min-width: 100px;">
                   </a>
                 </td>
               </tr>
@@ -329,7 +329,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
-                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Sahkan Alamat E-mel Anda</h1>
+                  <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">Verifikasi Alamat Email Anda</h1>
                 </td>
               </tr>
             </table>
@@ -344,7 +344,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     
               <tr>
                 <td align="left" bgcolor="#ffffff" style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                  <p style="margin: 0;">Terima kasih kerana guna rest api alpis, Sila tekan button di bawah untuk sahkan akaun anda.</p>
+                  <p style="margin: 0;">Terima Kasih Telah Menggunakan Rest Api HendraXD, Silakan Tekan Tombol Di Bawah Ini Untuk Memverifikasi Akun Anda.</p>
                 </td>
               </tr>
 
@@ -356,7 +356,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
                         <table border="0" cellpadding="0" cellspacing="0">
                           <tr>
                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Sahkan E-mel</a>
+                              <a href="${url}" target="_blank" style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Verifikasi Email</a>
                             </td>
                           </tr>
                         </table>
@@ -385,7 +385,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     
               <tr>
                 <td align="center" bgcolor="#e9ecef" style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                  <p style="margin: 0;">Anda menerima e-mel ini kerana kami menerima permintaan untuk pengesahan akaun untuk akaun anda. Jika anda tidak meminta pengesahan akaun anda boleh memadamkan e-mel ini dengan selamat.</p>
+                  <p style="margin: 0;">Anda Menerima Email Ini Karena Kami Menerima Permintaan Verifikasi Akun Anda. Jika Anda Tidak Meminta Verifikasi Akun, Anda Dapat menghapus Atau Abaikan Pesan Ini.</p>
                 </td>
               </tr>
     
@@ -413,4 +413,4 @@ module.exports.sendVerifyEmail = async (email, token) => {
 
 }
 
-//―――――――――――――――――――――――――――――――――――――――――― ┏  Make by Alip ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
+//―――――――――――――――――――――――――――――――――――――――――― ┏  Made by HendraXD ┓ ―――――――――――――――――――――――――――――――――――――――――― \\

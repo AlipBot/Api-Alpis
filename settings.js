@@ -3,15 +3,15 @@ require('dotenv').config()
 
 //_______________________ ┏  Info  ┓ _______________________\\
 //
-//   Credit : AlipBot
+//   Credit : HendraXD
 //   
 //   Note 
 //   Jangan Jual SC ini ,
-//   Jangan Buang Text ini,
-//   Siapa Mahu Upload Jangan Lupa Credit :),
-//   Siapa Tidak Letak Credit Akan Ambil Tindakan
+//   Jangan Hapus Text ini,
+//   Yang Mau Upload Jangan Lupa Credit :),
+//   yang Tidak Menaruh Credit Kami Akan Mengambil Tindakan
 //   
-//_______________________ ┏ Make By AlipBot ┓ _______________________\\
+//_______________________ ┏ ©2023 HendraXD ┓ _______________________\\
 
 
 
@@ -19,7 +19,7 @@ require('dotenv').config()
 
 //_______________________ ┏  Main Setting  ┓ _______________________\\
 
-creator = '乂𝘼𝙡𝙞𝙥乂' // Nama 
+creator = '乂HendraXD乂' // Nama 
 port = 8080 //port host
 LimitApikey = 200 // Limit Apikey default
 

@@ -11,7 +11,7 @@ http.createServer(app).listen(PORTHOST, () => {
    ██╔══██║██╔═══╝ ██║    ██╔══██║██║     ██╔═══╝ ██║╚════██║
    ██║  ██║██║     ██║    ██║  ██║███████╗██║     ██║███████║
    ╚═╝  ╚═╝╚═╝     ╚═╝    ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝ V2 
-			                          @alipje29
+			                          @HendraXD
 								 
 Server running on http://localhost:` + PORTHOST)
 console.log(`Hello ${creator}`)
