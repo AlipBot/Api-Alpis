@@ -133,16 +133,16 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 	if (!username ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter username"})   
 
 	alip.igstory(username).then(async (data) => {
-		if (!data.username ) return res.json(loghandler.instgram) 
+		if (!data) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
 		res.json({
 			status: true,
 	        creator: `${creator}`,
 			result: data
-	    })
-	}).catch(e => {
-		res.json(loghandler.instgram)
-    })
+	    }).catch(e => {
+			res.json(loghandler.instgram) 
+		})
+	})
 })
 
 
