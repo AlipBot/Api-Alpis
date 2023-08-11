@@ -97,7 +97,7 @@ router.get('/api/dowloader/twitter', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
 	
 alip.twitter(url).then(data => {
-if (!data.thumb ) res.json(loghandler.noturl)
+if (!data.video ) return res.json(loghandler.noturl)
 limitapikey(req.query.apikey)
 res.json({
 status: true,
@@ -126,6 +126,25 @@ alip.musically(url).then(data => {
 	res.json(loghandler.noturl)
 })
 })
+
+
+router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => {
+	var username = req.query.username
+	if (!username ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter username"})   
+
+	alip.igstory(username).then(async (data) => {
+		if (!data.username ) return res.json(loghandler.instgram) 
+		limitapikey(req.query.apikey)
+		res.json({
+			status: true,
+	        creator: `${creator}`,
+			result: data
+	    })
+	}).catch(e => {
+		res.json(loghandler.instgram)
+    })
+})
+
 
 router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	var url = req.query.url
