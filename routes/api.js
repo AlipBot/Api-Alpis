@@ -139,9 +139,7 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 			status: true,
 	        creator: `${creator}`,
 			result: data
-	    }).catch(e => {
-			res.json(loghandler.instgram) 
-		})
+	    })
 	})
 })
 
