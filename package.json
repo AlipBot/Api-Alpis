@@ -4,7 +4,7 @@
   "description": "make by alip free rest api",
   "main": "index.js",
   "engines": {
-    "node": "16.x"
+    "node": "18.x"
   },
   "directories": {
     "lib": "lib"
