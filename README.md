@@ -153,6 +153,8 @@ File Setting ``setting.js``
 * ## Hasil Deploy🌍
 
 [`alpis.eu.org `](https://alpis.eu.org)<br>
+[`alpis.bot-skylarkskyl.repl.co
+`](https://alpis.bot-skylarkskyl.repl.co)<br>
 
 
 * ## Support Deploy Free
