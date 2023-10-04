@@ -35,7 +35,7 @@ servicesmtp = 'Gmail'//Ada gmail ada sendinblue ikut masing2 limit gmail 500 lim
 sendemail = process.env.sendemail //Email SMTP
 fromsendemail = process.env.fromsendemail // From Email SMTP *kalau takde custom email kena sama email dengan Email SMTP
 sendpwmail = process.env.sendpwmail // Password Email SMTP
-domain = 'api.zexxa.tech'// domain website tanpa http or https
+domain = 'rest-api.yangdisana.repl.co'// domain website tanpa http or https
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
