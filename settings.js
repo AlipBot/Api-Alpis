@@ -19,9 +19,9 @@ require('dotenv').config()
 
 //_______________________ ┏  Main Setting  ┓ _______________________\\
 
-creator = '乂𝘼𝙡𝙞𝙥乂' // Nama 
+creator = '乂ZEXXA乂' // Nama 
 port = 8080 //port host
-LimitApikey = 200 // Limit Apikey default
+LimitApikey = 100 // Limit Apikey default
 
 //___________ ┏  Database Mongodb Setting  ┓ ___________\\
 
@@ -35,7 +35,7 @@ servicesmtp = 'Gmail'//Ada gmail ada sendinblue ikut masing2 limit gmail 500 lim
 sendemail = process.env.sendemail //Email SMTP
 fromsendemail = process.env.fromsendemail // From Email SMTP *kalau takde custom email kena sama email dengan Email SMTP
 sendpwmail = process.env.sendpwmail // Password Email SMTP
-domain = 'alpis.eu.org'// domain website tanpa http or https
+domain = 'api.zexxa.tech'// domain website tanpa http or https
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
 
