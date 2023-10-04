@@ -13,6 +13,6 @@ stdenv.mkDerivation {
   shellHook = ''
     LD=$CC
 
-		nix-shell run.nix
+		nix-shell npm start
   '';
 }
