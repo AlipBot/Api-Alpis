@@ -4,6 +4,7 @@ require('../settings')
 const express = require('express')
 const translate = require('translate-google')
 const alip = require("../lib/listdl")
+const fetch = require('node-fetch')
 const dylux = require('api-dylux')
 const textto = require('soundoftext-js')
 const googleIt = require('google-it')
@@ -201,13 +202,16 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
 	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel|stories)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
 
-	dylux.igdl(url).then(async (data) => {
+	fetch('https://api.akuari.my.id/downloader/igdl2?link=' + url)
+		.then(response => response.json())
+		.then(async (data) => {
 		if (!data ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
+			var result = data.respon
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: data
+			result: result
 	    })
 	}).catch(e => {
 		res.json(loghandler.noturl)
