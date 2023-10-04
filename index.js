@@ -34,7 +34,7 @@ const dataweb = require("./model/DataWeb");
 
 async function resetapi() {
   await User.updateMany({}, { $set: { limitApikey: LimitApikey } });
-  console.log("RESET LIMIT DONE");
+  console.log("RESET LIMIT USER DONE");
 }
 
 async function ResetRequestToday() {
@@ -44,7 +44,7 @@ async function ResetRequestToday() {
       RequestToday: 0,
     }
   );
-  console.log("RESET Request Today DONE");
+  console.log("RESET REQUEST TODAY DONE");
 }
 
 //_______________________ ┏ Code ┓ _______________________\\
