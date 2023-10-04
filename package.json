@@ -29,6 +29,7 @@
   },
   "homepage": "https://github.com/AlipBot/Api-Alpis#readme",
   "dependencies": {
+    "api-dylux": "^1.7.1",
     "axios": "^0.27.2",
     "bcryptjs": "^2.4.3",
     "bitly": "^7.1.2",
