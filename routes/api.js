@@ -56,11 +56,11 @@ async function cekKey(req, res, next) {
 
     let db = await User.findOne({apikey: apikey});
     if(db === null) {
-		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Tidak Wujud"})  
+		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Invalid"})  
 		} else if(!db.isVerified) {
-				return res.json({ status : false, creator : `${creator}`, message : "[!] Sila Verify Email dulu sebelum guna apikey"})  
+				return res.json({ status : false, creator : `${creator}`, message : "[!] Verify your email before use feature!"})  
 			} else if(db.limitApikey === 0) {
-				return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Sudah Habis"})  
+				return res.json({ status : false, creator : `${creator}`, message : "[!] Limit habis, tunggu 24 jam!"})  
 			}else{
         return next();
     }
@@ -81,6 +81,57 @@ router.get('/api/dowloader/fbdown', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
 alip.fbdown(url).then(data => {
 	if (!data.Normal_video ) return res.json(loghandler.noturl)
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/xnxxdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.xnxxdl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/xvideosdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.xvideosdl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/gdrivedl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.GDriveDl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
 	limitapikey(req.query.apikey)
 	res.json({
 	status: true,
@@ -133,7 +184,7 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 	var username = req.query.username
 	if (!username ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter username"})   
 
-	alip.igstory(username).then(async (data) => {
+	dylux.igstory(username).then(async (data) => {
 		if (!data) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
 		res.json({
@@ -150,7 +201,7 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
 	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel|stories)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
 
-	alip.igdl(url).then(async (data) => {
+	dylux.igdl(url).then(async (data) => {
 		if (!data ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
 		res.json({
