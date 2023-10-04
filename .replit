@@ -1,5 +1,5 @@
 
-run = "npm start"
+run = "nix-shell build.nix"
 entrypoint = "index.js"
 
 language = "nodejs"
