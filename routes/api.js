@@ -148,7 +148,7 @@ router.get('/api/downloader/filmapikdl', cekKey, async (req, res, next) => {
 sanzyy.search.filmApikDl(url).then(data => {
 	if (!data) return res.json(loghandler.noturl)
 	limitapikey(req.query.apikey)
-  var url = data.url
+  var url = data.Url
 	res.json({
 	status: true,
 	creator: `${creator}`,
