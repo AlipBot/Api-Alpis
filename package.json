@@ -75,6 +75,7 @@
     "password-validator": "^5.3.0",
     "path": "^0.12.7",
     "qs": "^6.10.3",
+    "sanzyy-api": "^1.1.4",
     "secure": "^0.0.1",
     "serve-favicon": "^2.5.0",
     "soundoftext-js": "^1.0.2",
