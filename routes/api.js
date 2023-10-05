@@ -1254,6 +1254,173 @@ router.get('/api/randomgambar/couplepp', cekKey, async (req, res, next) => {
 
 })
 
+router.get('/api/randomgambar/amongus', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/among.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/animegif', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/animegif.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/patrick', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/patrick.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/patrickgif', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/patrickgif.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/animestick', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/animestick.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/dinokuning', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/dinokuning.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/doge', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/doge.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/kawanspongebob', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/kawanspongebob.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/manusialidi', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/maanusialidi.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/mukalu', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/mukalu.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/paimon', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/paimon.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/rabbit', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/rabbit.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/random', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/random.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/spongebob', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/spongebob.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
 
 router.get('/api/randomgambar/dadu', cekKey, async (req, res, next) => {
 
