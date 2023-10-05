@@ -48,6 +48,19 @@
             </div>
             <br>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAI" aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fa fa-fw fa-gamepad"></i>
+                    <span>AI</span>
+                </a>
+                <div id="collapseAI" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">AI Features</h6>
+                        <a class="collapse-item" href="api/ai/text2img?query=1girl, red dress, white hair&apikey=<%= apikey %>" target="_blank">Stable Diffusion</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseBootstrap">
                     <i class="fa fa-fw fa-arrow-down"></i>
                     <span>Downloader</span>
@@ -71,6 +84,7 @@
                         <a class="collapse-item" href="api/dowloader/xnxxdl?url=https://www.xnxx.com/video-qedjv8e/hot_japan_girl_risa_shimizu_in_beautiful_sex_with_strangers&apikey=<%= apikey %>" target="_blank">XNXX Download</a>
                         <a class="collapse-item" href="api/dowloader/xvideosdl?url=&apikey=<%= apikey %>" target="_blank">XVIDEOS Download</a>
                         <a class="collapse-item" href="api/dowloader/gdrivedl?url=&apikey=<%= apikey %>" target="_blank">Google Drive Download</a>
+                        <a class="collapse-item" href="api/dowloader/threads?url=&apikey=<%= apikey %>" target="_blank">Threads Download</a>
 
                     </div>
                 </div>
@@ -178,7 +192,13 @@
                             <a class="collapse-item" href="api/search/wallpaper?text=Mobile%20Legends&apikey=<%= apikey %>" target="_blank">Wallpaper</a>
                             <a class="collapse-item" href="api/search/sticker?text=fun&apikey=<%= apikey %>" target="_blank">Sticker</a>
                             <a class="collapse-item" href="api/search/sfilemobi?text=Tiktok%20Mod&apikey=<%= apikey %>" target="_blank">Sfilemobi</a>
-
+                            <a class="collapse-item" href="api/search/xnxxsearch?query=step mom&apikey=<%= apikey %>" target="_blank">XNXX Search</a>
+                            <a class="collapse-item" href="api/search/xvideossearch?query=step mom&apikey=<%= apikey %>" target="_blank">XVIDEOS Search</a>
+                            <a class="collapse-item" href="api/search/lyrics?query=before you go&apikey=<%= apikey %>" target="_blank">Lyrics Search</a>
+                            <a class="collapse-item" href="api/search/wallpaper?query=anime&apikey=<%= apikey %>" target="_blank">Wallpaper Search</a>
+                            <a class="collapse-item" href="api/search/scsearch?query=mockingbird&apikey=<%= apikey %>" target="_blank">Soundcloud Search</a>
+                            <a class="collapse-item" href="api/search/npmsearch?query=api-dylux&apikey=<%= apikey %>" target="_blank">NPMJS Search</a>
+                            <a class="collapse-item" href="api/search/phsearch?query=step mom&apikey=<%= apikey %>" target="_blank">PornHub Search</a>
 
                         </div>
                     </div>
