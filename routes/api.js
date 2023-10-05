@@ -185,13 +185,16 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 	var username = req.query.username
 	if (!username ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter username"})   
 
-	dylux.igstory(username).then(async (data) => {
+	fetch('https://api.zahwazein.xyz/downloader/instagram/story?apikey=zenzkey_8bc01f5847&username='+username)
+		.then(response => response.json())
+		.then(async (data) => {
 		if (!data) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
+			var result = data.result
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: data
+			result: result
 	    })
 	})
 })
