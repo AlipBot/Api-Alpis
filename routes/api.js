@@ -970,7 +970,7 @@ router.get('/api/search/filmapiks', cekKey, async (req, res, next) => {
 sanz.search.filmApikS(url).then(data => {
 	if (data.status == false) return res.sendFile(error)
 	limitapikey(req.query.apikey)
-  var result = data.result
+  var result = data.data
 	res.json({
 	status: true,
 	creator: `${creator}`,
