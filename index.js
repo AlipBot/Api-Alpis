@@ -89,7 +89,7 @@ cron.schedule(
 
 //Reset All User Apikey Limit setiap sebulan
 cron.schedule(
-  "0 0 1 * *",
+  "0 0 0 * *",
   () => {
     resetapi();
   },
