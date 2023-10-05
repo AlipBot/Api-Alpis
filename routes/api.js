@@ -1,5 +1,6 @@
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
+__path = process.cwd()
 require('../settings')
 const express = require('express')
 const translate = require('translate-google')
@@ -72,7 +73,7 @@ async function limitapikey(apikey) {
        await User.findOneAndUpdate({apikey: apikey},{$inc: { limitApikey: -1}},{upsert: true,new: true})
 }
 
-
+var error = __path + '/views/error.html' // Error
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Dowloader  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
@@ -107,7 +108,7 @@ dylux.xnxxdl(url).then(data => {
 	})
 	})
 	 .catch(e => {
-		res.json(loghandler.error)
+		res.sendFile(error)
 })
 })
 
