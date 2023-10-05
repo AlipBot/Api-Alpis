@@ -106,7 +106,7 @@ sanzyy.ai.textToImage(q).then(data => {
 router.get('/api/ai/zexxaai', cekKey, async (req, res, next) => {
 	var q = req.query.text
 	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
-zexxai(q, 'Date.now()').then(data => {
+openai(q, 'Date.now()').then(data => {
 	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
 	limitapikey(req.query.apikey)
 	res.json({
