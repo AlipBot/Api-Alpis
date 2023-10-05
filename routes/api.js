@@ -5,6 +5,7 @@ require('../settings')
 const express = require('express')
 const translate = require('translate-google')
 const alip = require("../lib/listdl")
+const sanz = require("../lib/sanzyy-api")
 const fetch = require('node-fetch')
 const dylux = require('api-dylux')
 const sanzyy = require('sanzyy-api')
@@ -114,6 +115,24 @@ alip.fbdown(url).then(data => {
 	status: true,
 	creator: `${creator}`,
 	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/downloader/filmapikdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.search.filmApikDl(url).then(data => {
+	if (!data) return res.json(loghandler.noturl)
+	limitapikey(req.query.apikey)
+  var url = data.url
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	url
 	})
 	})
 	 .catch(e => {
@@ -943,6 +962,24 @@ alip.linkwa(text1).then((data) =>{
 }).catch((err) =>{
        res.json(loghandler.notfound)
     })
+})
+
+router.get('/api/search/filmapiks', cekKey, async (req, res, next) => {
+	var url = req.query.query
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})  
+sanz.search.filmApikS(url).then(data => {
+	if (data.status == false) return res.sendFile(error)
+	limitapikey(req.query.apikey)
+  var result = data.result
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	result
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
 })
 
 router.get('/api/search/xnxxsearch', cekKey, async (req, res, next) => {
