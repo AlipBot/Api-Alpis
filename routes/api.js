@@ -7,6 +7,7 @@ const translate = require('translate-google')
 const alip = require("../lib/listdl")
 const fetch = require('node-fetch')
 const dylux = require('api-dylux')
+const sanzyy = require('sanzyy-api')
 const textto = require('soundoftext-js')
 const googleIt = require('google-it')
 const { shortText } = require("limit-text-js")
@@ -74,6 +75,23 @@ async function limitapikey(apikey) {
 }
 
 var error = __path + '/view/error.html' // Error
+//―――――――――――――――――――――――――――――――――――――――――― ┏  AI  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
+
+router.get('/api/ai/text2img', cekKey, async (req, res, next) => {
+	var q = req.query.query
+	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.ai.textToImage(q).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	console.log(data)
+	/*var buffer = Buffer.from(data, 'binary')
+	fs.writeFileSync(__path+'/tmp/diffusion.jpg', buffer)
+	res.sendFile(__path+'/tmp/diffusion.jpg')*/
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Dowloader  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
@@ -126,6 +144,23 @@ dylux.xvideosdl(url).then(data => {
 	})
 	 .catch(e => {
 		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/threads', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.downloader.threads(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.sendFile(error)
 })
 })
 
@@ -903,6 +938,118 @@ alip.linkwa(text1).then((data) =>{
     })
 }).catch((err) =>{
        res.json(loghandler.notfound)
+    })
+})
+
+router.get('/api/search/xnxxsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.xnxxSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/xvideossearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.xvideosSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/lyrics', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.lyrics(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/wallpaper', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.wallpaper(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/scsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.scsearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/npmsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.npmSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/phsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.phSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
     })
 })
 
