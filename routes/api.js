@@ -6,6 +6,7 @@ const express = require('express')
 const translate = require('translate-google')
 const alip = require("../lib/listdl")
 const sanz = require("../lib/sanzyy-api")
+const zexxai = require("../lib/openai.js")
 const fetch = require('node-fetch')
 const dylux = require('api-dylux')
 const sanzyy = require('sanzyy-api')
@@ -94,6 +95,25 @@ sanzyy.ai.textToImage(q).then(data => {
 	/*var buffer = Buffer.from(data, 'binary')
 	fs.writeFileSync(__path+'/tmp/diffusion.jpg', buffer)
 	res.sendFile(__path+'/tmp/diffusion.jpg')*/
+	})
+	 .catch(e => {
+		 console.error(e);
+		res.json(loghandler.error)
+		 
+})
+})
+
+router.get('/api/ai/zexxaai', cekKey, async (req, res, next) => {
+	var q = req.query.text
+	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+zexxai(q, 'Date.now()').then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
 	})
 	 .catch(e => {
 		 console.error(e);
