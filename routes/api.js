@@ -73,7 +73,7 @@ async function limitapikey(apikey) {
        await User.findOneAndUpdate({apikey: apikey},{$inc: { limitApikey: -1}},{upsert: true,new: true})
 }
 
-var error = __path + '/views/error.html' // Error
+var error = __path + '/view/error.html' // Error
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Dowloader  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
