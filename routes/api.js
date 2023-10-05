@@ -103,6 +103,24 @@ sanzyy.ai.textToImage(q).then(data => {
 })
 })
 
+router.get('/api/ai/openai', cekKey, async (req, res, next) => {
+  var q = req.query.text
+  if(!q) return res.json({ status: false, creator: creator, message: "[!] masukan parameter text!"})
+fetch(encodeURI(`https://vihangayt.me/tools/chatgpt4?q=${q}`))
+  .then(response => response.json())
+  .then(async data => {
+    var message = data.data
+    res.json({
+      status: true,
+      creator: creator,
+      result: message
+    })
+  }).catch(e => {
+    console.log(e);
+    res.sendFile(error)
+  })
+})
+
 router.get('/api/ai/zexxaai', cekKey, async (req, res, next) => {
 	var q = req.query.text
 	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
