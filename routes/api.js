@@ -83,13 +83,21 @@ router.get('/api/ai/text2img', cekKey, async (req, res, next) => {
 sanzyy.ai.textToImage(q).then(data => {
 	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
 	limitapikey(req.query.apikey)
-	console.log(data)
+	var url = data.url
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	url
+	})
+	//console.log(data)
 	/*var buffer = Buffer.from(data, 'binary')
 	fs.writeFileSync(__path+'/tmp/diffusion.jpg', buffer)
 	res.sendFile(__path+'/tmp/diffusion.jpg')*/
 	})
 	 .catch(e => {
+		 console.error(e);
 		res.json(loghandler.error)
+		 
 })
 })
 
@@ -347,11 +355,7 @@ router.get('/api/dowloader/zippyshare', cekKey, async (req, res, next) => {
 	alip.zippyshare(url).then(async (data) => {
 		if (!data ) return res.json(loghandler.noturl)
 		limitapikey(req.query.apikey)
-		res.json({
-			status: true,
-	        creator: `${creator}`,
-			result: data
-	    })
+		res.sendFile(error)
 	}).catch(e => {
 		res.json(loghandler.noturl)
     })
@@ -947,10 +951,11 @@ router.get('/api/search/xnxxsearch', cekKey, async (req, res, next) => {
 dylux.xnxxSearch(text1).then((data) =>{ 
 	if (!data ) return res.json(loghandler.notfound)
 	limitapikey(req.query.apikey)
+	var result = data.result
     res.json({
 	status: true,
 	creator: `${creator}`,
-	result: data
+	result: result
     })
 }).catch((err) =>{
        res.sendFile(error)
