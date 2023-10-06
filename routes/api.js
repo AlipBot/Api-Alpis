@@ -4,8 +4,10 @@ __path = process.cwd()
 require('../settings')
 const express = require('express')
 const translate = require('translate-google')
+const fs = require('fs')
 const alip = require("../lib/listdl")
 const sanz = require("../lib/sanzyy-api")
+const axios = require('axios')
 const { openai } = require("../lib/openai.js")
 const fetch = require('node-fetch')
 const dylux = require('api-dylux')
@@ -1485,6 +1487,21 @@ router.get('/api/randomgambar/random', cekKey, async (req, res, next) => {
 
 })
 
+router.get('/api/randomgambar/neko', cekKey, async (req, res, next) => {
+  try {
+    sanz.random.anime.neko()
+    .then(async data => {
+      var img = data.url
+      let buff = await axios.get(img, {responseType: 'arraybuffer'})
+      //let ubah = Buffer.from(buff, 'binary')
+      fs.writeFileSync(__path+'/tmp/neko.jpg', buff.data)
+res.sendFile(__path+'/tmp/neko.jpg')
+    })
+  } catch (error) {
+    res.sendFile(error)
+  }
+})
+
 router.get('/api/randomgambar/spongebob', cekKey, async (req, res, next) => {
 	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/spongebob.json')
 	let random = resultt[Math.floor(Math.random() * resultt.length)]
@@ -2251,6 +2268,21 @@ router.get('/api/tools/ebinary', cekKey, async (req, res, next) => {
 			creator: `${creator}`,
 			result: encodeBinary(text1)
 		})
+})
+
+router.get('/api/tools/remini', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if(!url) return res.json({ status: false, creator: creator, message: "[!] masukan parameter url!"})
+  sanz.tools.enhanceImg(url)
+  .then(async data => {
+    res.json({
+      status: true,
+      creator: creator,
+      result: data
+    })
+  }).catch(e => {
+    res.sendFile(error)
+  })
 })
 
 router.get('/api/tools/debinary', cekKey, async (req, res, next) => {
