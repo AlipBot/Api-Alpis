@@ -7,6 +7,7 @@ const translate = require('translate-google')
 const fs = require('fs')
 const alip = require("../lib/listdl")
 const sanz = require("../lib/sanzyy-api")
+const request = require('request')
 const axios = require('axios')
 const { openai } = require("../lib/openai.js")
 const fetch = require('node-fetch')
@@ -2280,6 +2281,19 @@ router.get('/api/tools/remini', cekKey, async (req, res, next) => {
       creator: creator,
       result: data
     })
+  }).catch(e => {
+    res.sendFile(error)
+  })
+})
+
+router.get('/api/tools/removebg', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if (!url) return res.json({ status: false, creator: creator, message: '[!] Masukan parameter url!'})
+  axios.get(`https://xzn.wtf/api/removebg?url=${url}&apikey=zexxabot`, {responseType: 'arraybuffer'})
+  .then(data => {
+    fs.writeFileSync(__path+"/tmp/nobg.png", data.data)
+res.sendFile(__path+"/tmp/nobg.png")
+    //console.log(data.data)
   }).catch(e => {
     res.sendFile(error)
   })
