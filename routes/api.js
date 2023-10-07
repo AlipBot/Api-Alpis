@@ -7,6 +7,7 @@ const translate = require('translate-google')
 const fs = require('fs')
 const alip = require("../lib/listdl")
 const sanz = require("../lib/sanzyy-api")
+const { toanime } = require("../lib/toanime.js")
 const request = require('request')
 const axios = require('axios')
 const { openai } = require("../lib/openai.js")
@@ -2299,6 +2300,20 @@ res.sendFile(__path+"/tmp/nobg.png")
   })
 })
 
+router.get('/api/tools/toanime', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if(!url) return res.json({ status: false, creator: creator, message: "[!] Masukan parameter url!"})
+  try {
+    toanime(url)
+    .then(async data => {
+      let ambil = await axios.get(data.image_data, { responseType: 'arraybuffer' })
+     fs.writeFileSync(__path+"/tmp/toanime.jpg", ambil.data)
+   res.sendFile(__path+"/tmp/toanime.jpg")
+    })
+  } catch (error) {
+    res.sendFile(error)
+  }
+})
 router.get('/api/tools/debinary', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
