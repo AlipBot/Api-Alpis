@@ -17,6 +17,6 @@ http.createServer(app).listen(port, host, () => {
 
 
 ZEXXA REST API
-Server running on http://${host}:` + PORTHOST)
+Server running on http://${host}:` + port)
 console.log(`Hello ${creator}`)
 })
