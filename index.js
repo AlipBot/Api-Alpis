@@ -75,9 +75,9 @@ mongoose
 
 //_______________________ ┏ CronJob For Reset Limit ┓ _______________________\\
 
-// Reset Request Today Setiap sehari
+// Reset Request Everyday
 cron.schedule(
-  "0 0 0 * * *",
+  "0 0 * * *",
   () => {
     ResetRequestToday();
   },
@@ -87,9 +87,9 @@ cron.schedule(
   }
 );
 
-//Reset All User Apikey Limit setiap sebulan
+//Reset Limit Everyday
 cron.schedule(
-  "0 0 0 * * *",
+  "0 0 * * *",
   () => {
     resetapi();
   },
