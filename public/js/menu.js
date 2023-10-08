@@ -25,7 +25,7 @@
 
 //Visit
 
-$.getJSON("https://api.countapi.xyz/hit/alpis.eu.org/visitor", function(response) {
+$.getJSON("https://api.countapi.xyz/hit/apu.zexxa.tech/visitor", function(response) {
     $("#visitor").text(response.value);
 })
 
