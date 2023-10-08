@@ -1,1 +1,1 @@
-web:npm run node
+worker:npm run node
