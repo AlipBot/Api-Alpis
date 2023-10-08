@@ -2096,7 +2096,7 @@ router.get('/api/linkshort/tinyurlwithalias', cekKey, async (req, res, next) => 
 	if (!alias ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter alias"})  
 
     var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 	const data = { 'url': link, 'alias': shortText(alias, 30) }
 

@@ -11,7 +11,8 @@
   },
   "scripts": {
     "start": "node server.js",
-    "node": "nodemon server.js"
+    "node": "nodemon server.js",
+    "pm2": "pm2 start server.js"
   },
   "repository": {
     "type": "git",
