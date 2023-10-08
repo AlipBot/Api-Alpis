@@ -2,8 +2,9 @@ require("./settings");
 const http = require("http");
 const app = require("./index");
 const PORTHOST = port || 3000;
+const host = 'localhost';
 
-http.createServer(app).listen(PORTHOST, () => {
+http.createServer(app).listen(PORTHOST, host, () => {
     console.log(`
                               
 
