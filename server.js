@@ -1,10 +1,10 @@
 require("./settings");
 const http = require("http");
 const app = require("./index");
-const PORTHOST = port || 3000;
-const host = 'localhost';
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
-http.createServer(app).listen(PORTHOST, host, () => {
+http.createServer(app).listen(port, host, () => {
     console.log(`
                               
 
@@ -17,6 +17,6 @@ http.createServer(app).listen(PORTHOST, host, () => {
 
 
 ZEXXA REST API
-Server running on http://localhost:` + PORTHOST)
+Server running on http://${host}:` + PORTHOST)
 console.log(`Hello ${creator}`)
 })
