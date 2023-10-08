@@ -25,8 +25,8 @@
 
 //Visit
 
-$.getJSON("https://api.countapi.xyz/hit/apu.zexxa.tech/visitor", function(response) {
-    $("#visitor").text(response.value);
+$.getJSON("https://api.countapi.xyz/hit/api.zexxa.tech/visits", function(response) {
+    $("#visits").text(response.value);
 })
 
 
