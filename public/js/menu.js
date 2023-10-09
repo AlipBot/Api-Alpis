@@ -1,6 +1,20 @@
 
 
+//ucapan
 
+var myDate = new Date();
+var hrs = myDate.getHours();
+
+var greet;
+
+if (hrs < 12)
+  greet = 'Good Morning';
+else if (hrs >= 12 && hrs <= 17)
+  greet = 'Good Afternoon';
+else if (hrs >= 17 && hrs <= 24)
+  greet = 'Good Evening';
+
+document.getElementById('ucapan').innerHTML ='<b>' + greet + '</b>';
 
 
 
@@ -27,8 +41,20 @@
 
 $.getJSON("https://api.countapi.xyz/hit/api.zexxa.tech/visits", function(response) {
     $("#visits").text(response.value);
-})
+});
 
+var counterContainer = document.querySelector(".website-counter");
+var resetButton = document.querySelector("#reset");
+var visitCount = localStorage.getItem("page_view");
+
+if (visitCount) {
+  visitCount = Number(visitCount) + 1;
+  localStorage.setItem("page_view", visitCount);
+} else {
+  visitCount = 1;
+  localStorage.setItem("page_view", 1);
+}
+counterContainer.innerHTML = visitCount;
 
 
 
