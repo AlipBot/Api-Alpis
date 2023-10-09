@@ -46,7 +46,7 @@ async function getApikey(id) {
 //_______________________ ┏ Router ┓ _______________________\\
 
 router.get('/', (req, res) => {
-        res.render("home");
+        res.sendFile(__path+"/view/home.html");
 });
 
 router.get('/docs',  checkAuth, async (req, res) => {

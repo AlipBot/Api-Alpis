@@ -1,0 +1,273 @@
+/* Start Main Style */
+:root{
+    --mainColor: #0CEC84;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,body{
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+    overflow: hidden;
+}
+/* End Main Style */
+
+/* Start Landing */
+
+.landing{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-color: #1E212D;
+}
+/* Header */
+.landing header{
+    background-color: transparent;
+    position: relative;
+    padding: 27px 0;
+}
+/* Logo */
+.landing header .logo{
+    float: left;
+    color: #e4fbff;
+    text-decoration: none;
+    font-size: 27px;
+}
+/* Toggle Mneu Style */
+.landing header .menu-Toggle{
+    width: 35px;
+    background-color: #00d46f;
+    padding: 5px;
+    float: right;
+    position: absolute;
+    border-radius: 2px;
+    cursor: pointer;
+    display: none;
+    transition: 0.5s;
+    right: 0;
+    z-index: 1001;
+}
+@media (max-width: 991px) {
+    .landing header .menu-Toggle{
+        display: block;
+    }
+}
+.landing header .menu-Toggle:hover{
+    opacity: 0.8;
+}
+.landing header .menu-Toggle:active{
+    opacity: 1;
+}
+.landing header .menu-Toggle span{
+    width: 100%;
+    height: 3px;
+    background-color: #e4fbff;
+    display: block;
+    pointer-events: none;
+    border-radius: 20px;
+    transition: 0.5s ease-in-out;
+}
+/* The Menu Toggle Animation Spns */
+.landing header .menu-Toggle.anim span:first-child{
+    width: 50%;
+}
+.landing header .menu-Toggle.anim span:nth-child(2){
+    width: 80%;
+    margin-left: 7px;
+}
+.landing header .menu-Toggle.anim span:last-child{
+    width: 60%;
+}
+
+.menu-Toggle span:not(:last-child){
+    margin-bottom: 5px;
+}
+.landing header .logo span{
+    color: var(--mainColor);
+}
+/* Menu Links */
+.landing header nav ul{
+    float: right;
+    list-style: none;
+}
+@media (max-width: 991px) {
+    .landing header nav ul {
+        width: 70%;
+        float: none;
+        background-color: #0e101a;
+        text-align: center;
+        position: absolute;
+        top: -400px;
+        transition: 0.5s ease-in-out;
+        z-index: 1000;
+        padding: 20px 0;
+        left: 50%;
+        transform: translateX(-50%);
+        border: 1px solid rgba(221, 221, 221, 0.08);;
+    }
+    .landing header nav ul.open{
+        top: 0;
+    }
+}
+.landing header nav ul li{
+    display: inline-block;
+    padding: 10px 20px;
+}
+@media (max-width: 991px) {
+    .landing header nav ul li {
+        display: block;
+        margin: 15px 0;
+    }
+}
+.landing header nav ul li a{
+    color: #e4fbff;
+    text-decoration: none;
+    font-size: 13px;
+    transition: 0.4s;
+}
+.landing header nav ul li a:hover{
+    color: var(--mainColor);
+}
+.landing header nav ul li:first-child a{
+    color: var(--mainColor);
+}
+.landing header nav ul li:last-child a{
+    border: 1px solid var(--mainColor);;
+    border-radius: 4px;
+    color: var(--mainColor);;
+    padding: 8px 15px 6px;
+}
+.landing header nav ul li:last-child a:hover{
+    background-color: var(--mainColor);;
+    color: #fff;
+}
+
+/* Overlay Layer */
+@media (max-width: 991px) {
+    .landing .overlay{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0, .4);
+        z-index: 999;
+        opacity: 0;
+        display: none;
+        transition: 0.5s ease-in-out;
+    }
+    .landing .overlay.show{
+        display: block;
+        animation: feedIn 0.5s ease-in-out;
+        opacity: 1;
+    }
+}
+
+@keyframes feedIn{
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+/* Landing Content */
+.landing-Content{
+    color: #e4fbff;
+    width: 90%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70vh;
+    margin: auto;
+}
+.introduction-text{
+    margin-top: 50px;
+}
+.introduction-text h2{
+    font-size: 50px;
+}
+@media (max-width: 768px) {
+    .introduction-text h2{
+        font-size: 44px;
+    }
+}
+.introduction-text h2 span{
+    color: var(--mainColor);
+}
+.introduction-text p{
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 23px;
+    margin-top: 33px;
+    margin-bottom: 40px;
+}
+.introduction-text a{
+    text-decoration: none;
+    color: #e4fbff;
+    background-color: #00d46f;
+    padding: 10px 25px;
+    border-radius: 3px;
+    font-weight: bold;
+    transition: 0.4s ease-in-out;
+    font-size: 14px;
+}
+.introduction-text a:hover{
+    background-color: #31fc9d;
+}
+
+.landing-Content .photo-landing img{
+    width: 270px;
+    height: 400px;
+    object-fit: cover;
+    box-shadow:0 0 50px rgba(255, 255, 255, 0.051);
+    border: 1px solid rgba(0, 255, 136, 0.369);
+    padding: 3px;
+    filter: grayscale(100%);
+    transition: 0.6s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 30px;
+}
+@media (max-width: 768px) {
+    .landing-Content .photo-landing img {
+        display: none;
+    }
+}
+.landing-Content .photo-landing img:hover{
+    filter: grayscale(0%);
+}
+/* End Landing */
+
+
+/*  Start Responsive Friendly  */
+
+@media (min-width: 576px) { /* Small Screens */
+    .container {
+        max-width: 540px;
+    }
+}
+@media (min-width: 768px) { /* Medium Screens */
+    .container {
+        max-width: 720px;
+    }
+}
+@media (min-width: 992px) { /* Desktops Screens */
+    .container {
+        max-width: 960px;
+    }
+}
+@media (min-width: 1200px) { /* Large Screens */
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/*  End Responsive Friendly  */
