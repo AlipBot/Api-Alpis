@@ -86,15 +86,18 @@ var error = __path + '/view/error.html' // Error
 router.get('/api/ai/text2img', cekKey, async (req, res, next) => {
 	var q = req.query.query
 	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
-sanzyy.ai.textToImage(q).then(data => {
+sanzyy.ai.textToImage(q).then( async data => {
 	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
 	limitapikey(req.query.apikey)
 	var url = data.url
-	res.json({
+  let ambil = await axios.get(url, {responseType: 'arraybuffer'})
+  fs.writeFileSync(__path+"/tmp/diffusion.jpg", ambil.data)
+  res.sendFile(__path+"/tmp/diffusion.jpg")
+	/*res.json({
 	status: true,
 	creator: `${creator}`,
 	result:	url
-	})
+	})*/
 	//console.log(data)
 	/*var buffer = Buffer.from(data, 'binary')
 	fs.writeFileSync(__path+'/tmp/diffusion.jpg', buffer)
