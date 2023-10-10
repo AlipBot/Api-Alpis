@@ -2,16 +2,14 @@
   "version": 2,
   "builds": [
     {
-      "src": "server.js",
+      "src": "./server.js",
       "use": "@vercel/node"
     }
   ],
   "routes": [
     {
-      // Specify which paths will route to a destination using a regex
       "src": "/(.*)",
-      // Specify the paths' destinatio
-      "dest": "server.js"
+      "dest": "/"
     }
   ]
     }
