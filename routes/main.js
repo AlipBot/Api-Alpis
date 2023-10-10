@@ -46,7 +46,7 @@ async function getApikey(id) {
 //_______________________ ┏ Router ┓ _______________________\\
 
 router.get('/', (req, res) => {
-        res.sendFile(__path+"/view/home.html");
+        res.render("home");
 });
 
 router.get('/docs',  checkAuth, async (req, res) => {
@@ -60,7 +60,7 @@ router.get('/docs',  checkAuth, async (req, res) => {
 router.get("/logout", (req, res) => {
     req.logout(req.user, err => {
       if(err) return next(err);
-      res.redirect("/login");
+      res.redirect("/");
     });
   });
 
