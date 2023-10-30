@@ -82,7 +82,23 @@ async function limitapikey(apikey) {
 
 var error = __path + '/view/error.html' // Error
 //―――――――――――――――――――――――――――――――――――――――――― ┏  AI  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
-
+router.get('/api/ai/bard', cekKey, async (req, res, next) => {
+  var text = req.query.text
+  if (!text) return res.json({
+    status: false,
+    creator: creator, message: "[!] Masukan parameter text!"
+  })
+  let data = fetchJson(`https://site.zexxa.tech/api/ai/bard?text=${text}&apikey=Zexxabot`)
+  if (data.data.status !== true) {
+    res.json({status: false, creator: creator, message: "[!] Failed to fetch data!"})
+  } else {
+    res.json({
+      status: true,
+      creator: creator,
+      result: data.data.result
+    })
+  }
+})
 router.get('/api/ai/text2img', cekKey, async (req, res, next) => {
 	var q = req.query.query
 	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
