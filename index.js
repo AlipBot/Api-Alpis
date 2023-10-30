@@ -34,7 +34,7 @@ const dataweb = require("./model/DataWeb");
 
 async function resetapi() {
   await User.updateMany({}, { $set: { limitApikey: LimitApikey } });
-  console.log("RESET LIMIT DONE");
+  console.log("RESET LIMIT USER DONE");
 }
 
 async function ResetRequestToday() {
@@ -44,7 +44,7 @@ async function ResetRequestToday() {
       RequestToday: 0,
     }
   );
-  console.log("RESET Request Today DONE");
+  console.log("RESET REQUEST TODAY DONE");
 }
 
 //_______________________ ┏ Code ┓ _______________________\\
@@ -75,27 +75,27 @@ mongoose
 
 //_______________________ ┏ CronJob For Reset Limit ┓ _______________________\\
 
-// Reset Request Today Setiap sehari
+// Reset Request Everyday
 cron.schedule(
-  "0 0 0 * * *",
+  "0 0 * * *",
   () => {
     ResetRequestToday();
   },
   {
     scheduled: true,
-    timezone: "Asia/Kuala_Lumpur",
+    timezone: "Asia/Jakarta",
   }
 );
 
-//Reset All User Apikey Limit setiap sebulan
+//Reset Limit Everyday
 cron.schedule(
-  "0 0 1 * *",
+  "0 0 * * *",
   () => {
     resetapi();
   },
   {
     scheduled: true,
-    timezone: "Asia/Kuala_Lumpur",
+    timezone: "Asia/Jakarta",
   }
 );
 

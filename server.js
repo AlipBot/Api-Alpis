@@ -1,18 +1,22 @@
 require("./settings");
 const http = require("http");
 const app = require("./index");
-const PORTHOST = port || 8080;
+const port = process.env.PORT || 3000;
+const host = '0.0.0.0';
 
-http.createServer(app).listen(PORTHOST, () => {
+http.createServer(app).listen(port, host, () => {
     console.log(`
-        █████╗ ██╗     ██████╗ ██╗███████╗
-       ██╔══██╗██║     ██╔══██╗██║██╔════╝
-       ███████║██║     ██████╔╝██║███████╗
-       ██╔══██║██║     ██╔═══╝ ██║╚════██║
-       ██║  ██║███████╗██║     ██║███████║
-       ╚═╝  ╚═╝╚══════╝╚═╝     ╚═╝╚══════╝ V2 
-			                          @alipje29
-								 
-Server running on http://localhost:` + PORTHOST)
+                              
+
+███████╗███████╗██╗░░██╗██╗░░██╗░█████╗░
+╚════██║██╔════╝╚██╗██╔╝╚██╗██╔╝██╔══██╗
+░░███╔═╝█████╗░░░╚███╔╝░░╚███╔╝░███████║
+██╔══╝░░██╔══╝░░░██╔██╗░░██╔██╗░██╔══██║
+███████╗███████╗██╔╝╚██╗██╔╝╚██╗██║░░██║
+╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░░╚═╝╚═╝░░╚═╝
+
+
+ZEXXA REST API
+Server running on http://${host}:` + port)
 console.log(`Hello ${creator}`)
 })

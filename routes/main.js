@@ -60,7 +60,7 @@ router.get('/docs',  checkAuth, async (req, res) => {
 router.get("/logout", (req, res) => {
     req.logout(req.user, err => {
       if(err) return next(err);
-      res.redirect("/login");
+      res.redirect("/");
     });
   });
 

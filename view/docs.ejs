@@ -6,10 +6,10 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="Rest Api website">
-    <meta name="author" content="Alip">
-    <meta property="og:image" content="https://telegra.ph/file/f492065d44c897cd3836e.png">
-    <title>Alpis API │ Docs</title>
+    <meta name="description" content="Zexxa Rest Api website">
+    <meta name="author" content="Kira-Master">
+    <meta property="og:image" content="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIEF6UB7-9gj8iWJKqLFRWcyuVj0KTAZn2sw&usqp=CAU">
+    <title>Zexxa API │ Docs</title>
     <script src="https://kit.fontawesome.com/5367cb78eb.js" crossorigin="anonymous"></script>
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -22,8 +22,8 @@
    
         <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/docs">
-                <img src="images/icon.png" class="rounded-circle shadow-4"style="width: 50px;" alt="Avatar" />
-                <div class="sidebar-brand-text mx-3">Rest API</div>
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTY9ZVkRbTQb0kUqX_hZdFDK5EYEKx3LUf_RA&usqp=CAU" class="rounded-circle shadow-4"style="width: 50px;" alt="Avatar" />
+                <div class="sidebar-brand-text mx-3">Zexxa Rest API</div>
             </a>
             
             <hr class="sidebar-divider">
@@ -48,6 +48,22 @@
             </div>
             <br>
             <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseAI" aria-expanded="true" aria-controls="collapseBootstrap">
+                    <i class="fa fa-fw fa-robot"></i>
+                    <span>AI</span>
+                </a>
+                <div id="collapseAI" class="collapse" aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+                    <div class="py-2 collapse-inner rounded">
+                        <h6 class="collapse-header">AI Features</h6>
+                        <a class="collapse-item" href="api/ai/text2img?query=1girl, red dress, white hair&apikey=<%= apikey %>" target="_blank">Text To Image</a>
+                        <a class="collapse-item" href="api/ai/zexxaai?text=introduce your self&apikey=<%= apikey %>" target="_blank">Zexxa AI</a>
+                      <a class="collapse-item" href="api/ai/bard?text=who are you&apikey=<%= apikey %>" target="_blank">Bard AI</a>
+                                              <a class="collapse-item" href="api/ai/openai?text=introduce your self&apikey=<%= apikey %>" target="_blank">ChatGPT</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDownload" aria-expanded="true" aria-controls="collapseBootstrap">
                     <i class="fa fa-fw fa-arrow-down"></i>
                     <span>Downloader</span>
@@ -66,8 +82,13 @@
                         <a class="collapse-item" href="api/dowloader/soundcloud?url=https://soundcloud.com/ndaa-212683099/dj-coba-kau-ingat-ingat-kembali-seharusnya-aku-jungle-dutch-terbaru-2021-full-bass-viral-tik?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing&apikey=<%= apikey %>" target="_blank">SoundCloud</a>
                         <a class="collapse-item" href="api/dowloader/mediafire?url=https://www.mediafire.com/file/gpeiucmm1xo6ln0/hello_world.mp4/file&apikey=<%= apikey %>" target="_blank">MediaFire</a>
                         <a class="collapse-item" href="api/dowloader/sfilemobi?url=https://sfile.mobi/P0D2WxqDwA7&apikey=<%= apikey %>" target="_blank">Sfilemobi</a>
-                        <a class="collapse-item" href="api/dowloader/zippyshare?url=https://www42.zippyshare.com/v/RLxFmmyZ/file.html&apikey=<%= apikey %>" target="_blank">Zippyshare</a>
+                      
                         <a class="collapse-item" href="api/dowloader/telesticker?url=https://t.me/addstickers/Shitsshitsshitsshists&apikey=<%= apikey %>" target="_blank">Telegram Sticker</a>
+                        <a class="collapse-item" href="api/dowloader/xnxxdl?url=https://www.xnxx.com/video-qedjv8e/hot_japan_girl_risa_shimizu_in_beautiful_sex_with_strangers&apikey=<%= apikey %>" target="_blank">XNXX Download</a>
+                        <a class="collapse-item" href="api/dowloader/xvideosdl?url=&apikey=<%= apikey %>" target="_blank">XVIDEOS Download</a>
+                        <a class="collapse-item" href="api/dowloader/gdrivedl?url=&apikey=<%= apikey %>" target="_blank">Google Drive Download</a>
+                        <a class="collapse-item" href="api/dowloader/threads?url=&apikey=<%= apikey %>" target="_blank">Threads Download</a>
+                        <a class="collapse-item" href="api/downloader/filmapikdl?url=https://film-apik.online/nonton-film-the-little-mermaid-3-2023-subtitle-indonesia&apikey=<%= apikey %>" target="_blank">FilmApik Download</a>
 
                     </div>
                 </div>
@@ -81,27 +102,27 @@
                 <div id="collapseTextPro" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Text Pro Features</h6>
-                        <a class="collapse-item" href="api/textpro/pencil?text=Alip&apikey=<%= apikey %>" target="_blank">Pencils</a>
-                        <a class="collapse-item" href="api/textpro/glitch?text=Alip&apikey=<%= apikey %>" target="_blank">Glitch</a>
-                        <a class="collapse-item" href="api/textpro/berry?text=Alip&apikey=<%= apikey %>" target="_blank">Berry</a>
-                        <a class="collapse-item" href="api/textpro/blackpink?text=Alip&apikey=<%= apikey %>" target="_blank">Black pink</a>
-                        <a class="collapse-item" href="api/textpro/neon?text=Alip&apikey=<%= apikey %>" target="_blank">Neon</a>
-                        <a class="collapse-item" href="api/textpro/logobear?text=Alip&apikey=<%= apikey %>" target="_blank">Logo Bear</a>
-                        <a class="collapse-item" href="api/textpro/3dchristmas?text=Alip&apikey=<%= apikey %>" target="_blank">3D Christmas</a>
-                        <a class="collapse-item" href="api/textpro/thunder?text=Alip&apikey=<%= apikey %>" target="_blank">Thunder</a>
-                        <a class="collapse-item" href="api/textpro/3dboxtext?text=Alip&apikey=<%= apikey %>" target="_blank">3D Box</a>
-                        <a class="collapse-item" href="api/textpro/glitch2?text=Alip&text2=pro&apikey=<%= apikey %>" target="_blank">Glitch2</a>
-                        <a class="collapse-item" href="api/textpro/glitchtiktok?text=Alip&text2=pro&apikey=<%= apikey %>" target="_blank">Glitch Tiktok</a>
-                        <a class="collapse-item" href="api/textpro/video-game-classic?text=Alip&text2=pro&apikey=<%= apikey %>" target="_blank">Video Game Classic</a>
-                        <a class="collapse-item" href="api/textpro/marvel-studios?text=Alip&text2=pro&apikey=<%= apikey %>" target="_blank">Marvel Studios</a>
-                        <a class="collapse-item" href="api/textpro/ninja-logo?text=Alip&text2=pro&apikey=<%= apikey %>" target="_blank">Ninja Logo</a>
-                        <a class="collapse-item" href="api/textpro/transformer?text=Alip&apikey=<%= apikey %>" target="_blank">Transformer</a>
-                        <a class="collapse-item" href="api/textpro/green-horror?text=Alip&apikey=<%= apikey %>" target="_blank">Green Horrorer</a>
-                        <a class="collapse-item" href="api/textpro/magma?text=Alip&apikey=<%= apikey %>" target="_blank">Magma</a>
-                        <a class="collapse-item" href="api/textpro/3d-neon-light?text=Alip&apikey=<%= apikey %>" target="_blank">3d Neon Light</a>
-                        <a class="collapse-item" href="api/textpro/3d-orange-juice?text=Alip&apikey=<%= apikey %>" target="_blank">3d Orange Juice</a>
-                        <a class="collapse-item" href="api/textpro/chocolate-cake?text=Alip&apikey=<%= apikey %>" target="_blank">Chocolate Cake</a>
-                        <a class="collapse-item" href="api/textpro/strawberry?text=Alip&apikey=<%= apikey %>" target="_blank">Strawberry</a>
+                        <a class="collapse-item" href="api/textpro/pencil?text=Zexxa&apikey=<%= apikey %>" target="_blank">Pencils</a>
+                        <a class="collapse-item" href="api/textpro/glitch?text=Zexxa&apikey=<%= apikey %>" target="_blank">Glitch</a>
+                        <a class="collapse-item" href="api/textpro/berry?text=Zexxa&apikey=<%= apikey %>" target="_blank">Berry</a>
+                        <a class="collapse-item" href="api/textpro/blackpink?text=Zexxa&apikey=<%= apikey %>" target="_blank">Black pink</a>
+                        <a class="collapse-item" href="api/textpro/neon?text=Zexxa&apikey=<%= apikey %>" target="_blank">Neon</a>
+                        <a class="collapse-item" href="api/textpro/logobear?text=Zexxa&apikey=<%= apikey %>" target="_blank">Logo Bear</a>
+                        <a class="collapse-item" href="api/textpro/3dchristmas?text=Zexxa&apikey=<%= apikey %>" target="_blank">3D Christmas</a>
+                        <a class="collapse-item" href="api/textpro/thunder?text=zexxa&apikey=<%= apikey %>" target="_blank">Thunder</a>
+                        <a class="collapse-item" href="api/textpro/3dboxtext?text=zexxa&apikey=<%= apikey %>" target="_blank">3D Box</a>
+                        <a class="collapse-item" href="api/textpro/glitch2?text=zexxa&text2=pro&apikey=<%= apikey %>" target="_blank">Glitch2</a>
+                        <a class="collapse-item" href="api/textpro/glitchtiktok?text=zexxa&text2=pro&apikey=<%= apikey %>" target="_blank">Glitch Tiktok</a>
+                        <a class="collapse-item" href="api/textpro/video-game-classic?text=zexxa&text2=pro&apikey=<%= apikey %>" target="_blank">Video Game Classic</a>
+                        <a class="collapse-item" href="api/textpro/marvel-studios?text=zexxa&text2=pro&apikey=<%= apikey %>" target="_blank">Marvel Studios</a>
+                        <a class="collapse-item" href="api/textpro/ninja-logo?text=zexxa&text2=pro&apikey=<%= apikey %>" target="_blank">Ninja Logo</a>
+                        <a class="collapse-item" href="api/textpro/transformer?text=zexxa&apikey=<%= apikey %>" target="_blank">Transformer</a>
+                        <a class="collapse-item" href="api/textpro/green-horror?text=zexxa&apikey=<%= apikey %>" target="_blank">Green Horrorer</a>
+                        <a class="collapse-item" href="api/textpro/magma?text=zexxa&apikey=<%= apikey %>" target="_blank">Magma</a>
+                        <a class="collapse-item" href="api/textpro/3d-neon-light?text=zexxa&apikey=<%= apikey %>" target="_blank">3d Neon Light</a>
+                        <a class="collapse-item" href="api/textpro/3d-orange-juice?text=zexxa&apikey=<%= apikey %>" target="_blank">3d Orange Juice</a>
+                        <a class="collapse-item" href="api/textpro/chocolate-cake?text=zexxa&apikey=<%= apikey %>" target="_blank">Chocolate Cake</a>
+                        <a class="collapse-item" href="api/textpro/strawberry?text=zexxa&apikey=<%= apikey %>" target="_blank">Strawberry</a>
                     </div>
                 </div>
             </li>
@@ -114,21 +135,21 @@
                 <div id="collapsePhotooxy" class="collapse" aria-labelledby="headingForm" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Photooxy Features</h6>
-                        <a class="collapse-item" href="api/photooxy/flaming?text=Alip&apikey=<%= apikey %>" target="_blank">Flaming</a>
-                        <a class="collapse-item" href="api/photooxy/shadow-sky?text=Alip&apikey=<%= apikey %>" target="_blank">Shadow Sky</a>
-                        <a class="collapse-item" href="api/photooxy/metallic?text=Alip&apikey=<%= apikey %>" target="_blank">Metallic</a>
-                        <a class="collapse-item" href="api/photooxy/naruto?text=Alip&apikey=<%= apikey %>" target="_blank">Naruto</a>
-                        <a class="collapse-item" href="api/photooxy/pubg?text=Pubg&text2=Alip&apikey=<%= apikey %>" target="_blank">PUBG</a>
-                        <a class="collapse-item" href="api/photooxy/under-grass?text=Alip&apikey=<%= apikey %>" target="_blank">Under Grass</a>
-                        <a class="collapse-item" href="api/photooxy/harry-potter?text=Alip&apikey=<%= apikey %>" target="_blank">Harry Potter</a>
-                        <a class="collapse-item" href="api/photooxy/flower-typography?text=Alip&apikey=<%= apikey %>" target="_blank">Flower Typography</a>
-                        <a class="collapse-item" href="api/photooxy/picture-of-love?text=Alip&apikey=<%= apikey %>" target="_blank">Picture Of Love</a>
-                        <a class="collapse-item" href="api/photooxy/coffee-cup?text=Alip&apikey=<%= apikey %>" target="_blank">Coffee Cup</a>
-                        <a class="collapse-item" href="api/photooxy/butterfly?text=Alip&apikey=<%= apikey %>" target="_blank">Butterfly</a>
-                        <a class="collapse-item" href="api/photooxy/night-sky?text=Alip&apikey=<%= apikey %>" target="_blank">Night Sky</a>
-                        <a class="collapse-item" href="api/photooxy/carved-wood?text=Alip&apikey=<%= apikey %>" target="_blank">Carved Wood</a>
-                        <a class="collapse-item" href="api/photooxy/illuminated-metallic?text=Alip&apikey=<%= apikey %>" target="_blank">Illuminated Metallic</a>
-                        <a class="collapse-item" href="api/photooxy/sweet-candy?text=Alip&apikey=<%= apikey %>" target="_blank">Sweet Candy</a>
+                        <a class="collapse-item" href="api/photooxy/flaming?text=zexxa&apikey=<%= apikey %>" target="_blank">Flaming</a>
+                        <a class="collapse-item" href="api/photooxy/shadow-sky?text=zexxa&apikey=<%= apikey %>" target="_blank">Shadow Sky</a>
+                        <a class="collapse-item" href="api/photooxy/metallic?text=zexxa&apikey=<%= apikey %>" target="_blank">Metallic</a>
+                        <a class="collapse-item" href="api/photooxy/naruto?text=zexxa&apikey=<%= apikey %>" target="_blank">Naruto</a>
+                        <a class="collapse-item" href="api/photooxy/pubg?text=Pubg&text2=zexxa&apikey=<%= apikey %>" target="_blank">PUBG</a>
+                        <a class="collapse-item" href="api/photooxy/under-grass?text=zexxa&apikey=<%= apikey %>" target="_blank">Under Grass</a>
+                        <a class="collapse-item" href="api/photooxy/harry-potter?text=zexxa&apikey=<%= apikey %>" target="_blank">Harry Potter</a>
+                        <a class="collapse-item" href="api/photooxy/flower-typography?text=zexxa&apikey=<%= apikey %>" target="_blank">Flower Typography</a>
+                        <a class="collapse-item" href="api/photooxy/picture-of-love?text=zexxa&apikey=<%= apikey %>" target="_blank">Picture Of Love</a>
+                        <a class="collapse-item" href="api/photooxy/coffee-cup?text=zexxa&apikey=<%= apikey %>" target="_blank">Coffee Cup</a>
+                        <a class="collapse-item" href="api/photooxy/butterfly?text=zexxa&apikey=<%= apikey %>" target="_blank">Butterfly</a>
+                        <a class="collapse-item" href="api/photooxy/night-sky?text=zexxa&apikey=<%= apikey %>" target="_blank">Night Sky</a>
+                        <a class="collapse-item" href="api/photooxy/carved-wood?text=zexxa&apikey=<%= apikey %>" target="_blank">Carved Wood</a>
+                        <a class="collapse-item" href="api/photooxy/illuminated-metallic?text=zexxa&apikey=<%= apikey %>" target="_blank">Illuminated Metallic</a>
+                        <a class="collapse-item" href="api/photooxy/sweet-candy?text=zexxa&apikey=<%= apikey %>" target="_blank">Sweet Candy</a>
                     </div>
                 </div>
             </li>
@@ -173,9 +194,16 @@
                             <a class="collapse-item" href="api/search/google?text=Mobile%20Legends&apikey=<%= apikey %>" target="_blank">Google</a>
                             <a class="collapse-item" href="api/search/googleimage?text=Mobile%20Legends&apikey=<%= apikey %>" target="_blank">Google Image</a>
                             <a class="collapse-item" href="api/search/wallpaper?text=Mobile%20Legends&apikey=<%= apikey %>" target="_blank">Wallpaper</a>
-                            <a class="collapse-item" href="api/search/sticker?text=fun&apikey=<%= apikey %>" target="_blank">Sticker</a>
+                            <a class="collapse-item" href="api/search/sticker?text=fun&apikey=<%= apikey %>" target="_blank">Stickerpack</a>
                             <a class="collapse-item" href="api/search/sfilemobi?text=Tiktok%20Mod&apikey=<%= apikey %>" target="_blank">Sfilemobi</a>
-
+                            <a class="collapse-item" href="api/search/xnxxsearch?query=step mom&apikey=<%= apikey %>" target="_blank">XNXX Search</a>
+                            <a class="collapse-item" href="api/search/xvideossearch?query=step mom&apikey=<%= apikey %>" target="_blank">XVIDEOS Search</a>
+                            <a class="collapse-item" href="api/search/lyrics?query=before you go&apikey=<%= apikey %>" target="_blank">Lyrics Search</a>
+                            <a class="collapse-item" href="api/search/wallpaper?query=anime&apikey=<%= apikey %>" target="_blank">Wallpaper Search</a>
+                            <a class="collapse-item" href="api/search/scsearch?query=mockingbird&apikey=<%= apikey %>" target="_blank">Soundcloud Search</a>
+                            <a class="collapse-item" href="api/search/npmsearch?query=api-dylux&apikey=<%= apikey %>" target="_blank">NPMJS Search</a>
+                            <a class="collapse-item" href="api/search/phsearch?query=step mom&apikey=<%= apikey %>" target="_blank">PornHub Search</a>
+                            <a class="collapse-item" href="api/search/filmapiks?query=mermaid&apikey=<%= apikey %>" target="_blank">FilmApik Search</a>
 
                         </div>
                     </div>
@@ -189,9 +217,23 @@
                 <div id="collapserandomimage" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Random Gambar Features</h6>
-                        <a class="collapse-item" href="api/randomgambar/couplepp?apikey=<%= apikey %>" target="_blank">Couple pp</a>
+                        <a class="collapse-item" href="api/randomgambar/couplepp?apikey=<%= apikey %>" target="_blank">PP Couple</a>
                         <a class="collapse-item" href="api/randomgambar/dadu?apikey=<%= apikey %>" target="_blank">Dadu</a>
                         <a class="collapse-item" href="api/randomgambar/coffee?apikey=<%= apikey %>" target="_blank">Coffee</a>
+                        <a class="collapse-item" href="api/randomgambar/patrick?apikey=<%= apikey %>" target="_blank">Patrick</a>
+                        <a class="collapse-item" href="api/randomgambar/patrickgif?apikey=<%= apikey %>" target="_blank">Patrick GIF</a>
+                        <a class="collapse-item" href="api/randomgambar/paimon?apikey=<%= apikey %>" target="_blank">Paimon</a>
+                        <a class="collapse-item" href="api/randomgambar/animestick?apikey=<%= apikey %>" target="_blank">Anime</a>
+                        <a class="collapse-item" href="api/randomgambar/animegif?apikey=<%= apikey %>" target="_blank">Anime GIF</a>
+                        <a class="collapse-item" href="api/randomgambar/amongus?apikey=<%= apikey %>" target="_blank">Among us</a>
+                        <a class="collapse-item" href="api/randomgambar/Dinokuning?apikey=<%= apikey %>" target="_blank">Dinokuning</a>
+                        <a class="collapse-item" href="api/randomgambar/mukalu?apikey=<%= apikey %>" target="_blank">Mukalu</a>
+                        <a class="collapse-item" href="api/randomgambar/manusialidi?apikey=<%= apikey %>" target="_blank">Manusia lidi</a>
+                        <a class="collapse-item" href="api/randomgambar/doge?apikey=<%= apikey %>" target="_blank">Doge</a>
+                        <a class="collapse-item" href="api/randomgambar/kawanspongebob?apikey=<%= apikey %>" target="_blank">Kawan Spongebob</a>
+                        <a class="collapse-item" href="api/randomgambar/rabbit?apikey=<%= apikey %>" target="_blank">Rabbit</a>
+                        <a class="collapse-item" href="api/randomgambar/random?apikey=<%= apikey %>" target="_blank">Random</a>
+                        <a class="collapse-item" href="api/randomgambar/spongebob?apikey=<%= apikey %>" target="_blank">Spongebob</a>
                     </div>
                 </div>
             </li>
@@ -204,14 +246,14 @@
                 <div id="collapsegame" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Game Features</h6>
-            <a class="collapse-item" target="_blank" href="api/game/tembakgambar?apikey=<%= apikey %>">Tembak Gambar</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembakgambar?apikey=<%= apikey %>">Tebak Gambar</a>
             <a class="collapse-item" target="_blank" href="api/game/susunkata?apikey=<%= apikey %>">Susun Kata</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembakbendera?apikey=<%= apikey %>">Tembak Bendera</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembakgame?apikey=<%= apikey %>">Tembak Game</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembakkata?apikey=<%= apikey %>">Tembak Kata</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembaklirik?apikey=<%= apikey %>">Tembak Lirik</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembaklagu?apikey=<%= apikey %>">Tembak Lagu</a>
-            <a class="collapse-item" target="_blank" href="api/game/tembakkimia?apikey=<%= apikey %>">Tembak Kimia</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembakbendera?apikey=<%= apikey %>">Tebak Bendera</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembakgame?apikey=<%= apikey %>">Tebak Game</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembakkata?apikey=<%= apikey %>">Tebak Kata</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembaklirik?apikey=<%= apikey %>">Tebak Lirik</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembaklagu?apikey=<%= apikey %>">Tebak Lagu</a>
+            <a class="collapse-item" target="_blank" href="api/game/tembakkimia?apikey=<%= apikey %>">Tebak Kimia</a>
             </div>
                 </div>
             </li>
@@ -254,10 +296,10 @@
                 <div id="collapselink" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Link Short</h6>
-                        <a class="collapse-item" target="_blank" href="api/linkshort/tinyurl?link=https://alpis.eu.org/&apikey=<%= apikey %>">Tinyurl</a>
-                        <a class="collapse-item" target="_blank" href="api/linkshort/tinyurlwithalias?link=https://alpis.eu.org/&alias=RestApiAlpiV2s&apikey=<%= apikey %>">Tinyurl With Alias</a>
-                        <a class="collapse-item" target="_blank" href="api/linkshort/cuttly?link=https://api-alpis.onrender.com&apikey=<%= apikey %>">Cuttly</a>
-                        <a class="collapse-item" target="_blank" href="api/linkshort/bitly?link=https://alpis.eu.org/&apikey=<%= apikey %>">Bitly</a>
+                        <a class="collapse-item" target="_blank" href="api/linkshort/tinyurl?link=&apikey=<%= apikey %>">Tinyurl</a>
+                        <a class="collapse-item" target="_blank" href="api/linkshort/tinyurlwithalias?link=https://zexxa.tech/&alias=&apikey=<%= apikey %>">Tinyurl With Alias</a>
+                        <a class="collapse-item" target="_blank" href="api/linkshort/cuttly?link=&apikey=<%= apikey %>">Cuttly</a>
+                        <a class="collapse-item" target="_blank" href="api/linkshort/bitly?link=&apikey=<%= apikey %>">Bitly</a>
 
                     </div>
                 </div>
@@ -265,15 +307,15 @@
 
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePrimbon" aria-expanded="true" aria-controls="collapseTable">
-                    <i class="fab fa-fw fa-acquisitions-incorporated"></i>
+                                        <i class="fab fa-fw fa-acquisitions-incorporated"></i>
                     <span>Information</span>
                 </a>
                 <div id="collapsePrimbon" class="collapse" aria-labelledby="headingTable" data-parent="#accordionSidebar">
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Information Features</h6>
-            <a class="collapse-item" target="_blank" href="api/info/githubstalk?user=AlipBot&apikey=<%= apikey %>">Github Stalk</a>
+            <a class="collapse-item" target="_blank" href="api/info/githubstalk?user=Kira-Master&apikey=<%= apikey %>">Github Stalk</a>
             <a class="collapse-item" target="_blank" href="api/info/waktuksolatmy?apikey=<%= apikey %>">Waktuk Solat MY</a>
-            <a class="collapse-item" target="_blank" href="api/info/translate?text=Thank%20YOU%20Use%20REST%20ALIP%20API&lang=ms&apikey=<%= apikey %>">Translate</a>
+            <a class="collapse-item" target="_blank" href="api/info/translate?text=Thank%20YOU%20Use%20REST%20ZEXXA%20API&lang=id&apikey=<%= apikey %>">Translate</a>
             <a class="collapse-item" target="_blank" href="api/info/emoji?emoji=🗿&apikey=<%= apikey %>">Emoji</a>
 
 
@@ -290,6 +332,11 @@
                     <div class="py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Tools Features</h6>
             <a class="collapse-item" target="_blank" href="api/tools/ebase64?text=Rest%20Api%20By%20Alip&apikey=<%= apikey %>">Ebase</a>
+                      <a class="collapse-item" target="_blank" href="api/tools/remini?url=https://telegra.ph/file/f564e50202cc67ca22d92.jpg&apikey=<%= apikey %>">Remini</a>                      
+                      <a class="collapse-item" target="_blank" href="api/tools/removebg?url=https://telegra.ph/file/f564e50202cc67ca22d92.jpg&apikey=<%= apikey %>">Remove Background</a>
+                                            <a class="collapse-item" target="_blank" href="api/tools/toanime?url=https://telegra.ph/file/f564e50202cc67ca22d92.jpg&apikey=<%= apikey %>">To Anime</a>
+                                            <a class="collapse-item" target="_blank" href="api/tools/tozombie?url=https://telegra.ph/file/f564e50202cc67ca22d92.jpg&apikey=<%= apikey %>">To Zombie</a>
+                      
             <a class="collapse-item" target="_blank" href="api/tools/debase64?text=UmVzdCBBcGkgQnkgQWxpcA==&apikey=<%= apikey %>">Debase</a>
             <a class="collapse-item" target="_blank" href="api/tools/ebinary?text=RestApiByAlip&apikey=<%= apikey %>">Ebinary</a>
             <a class="collapse-item" target="_blank" href="api/tools/debinary?text=01010010%2001100101%2001110011%2001110100%2001000001%2001110000%2001101001%2001000010%2001111001%2001000001%2001101100%2001101001%2001110000&apikey=<%= apikey %>">Debinary</a>
@@ -320,13 +367,13 @@
                 </div>
                 <br>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://github.com/AlipBot">
+                    <a class="nav-link" href="https://github.com/Kira-Master">
                         <i class="fab fa-fw fa-github"></i>
                         <span>Github</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://instagram.com/alipje29">
+                    <a class="nav-link" href="https://instagram.com/paujikerenbanget">
                         <i class="fab fa-fw fa-instagram"></i>
                         <span>Instagram</span>
                     </a>
@@ -381,8 +428,8 @@
                             <div class="card-body">
                                 <div class="row align-items-center">
                                     <div class="col mr-2">
-                                        <div class="text-md-left font-weight-bold mb-2 text-primary">Rest Api Alip </div>
-                                        <div class="text-sm-left mb-0 font-weight-bold">Hallo <%= username %> Selamat Datang Rest Api Alip </div>
+                                        <div class="text-md-left font-weight-bold mb-2 text-primary">Rest Api Zexxa </div>
+                                        <div class="text-sm-left mb-0 font-weight-bold">Hallo <span id="ucapan"></span> <%= username %> Selamat Datang Di Rest Api Zexxa </div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-quote-right fa-2x text-primary"></i>
@@ -399,7 +446,7 @@
                                 <div class="row align-items-center">
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-uppercase mb-1">Visitor</div>
-                                        <div class="h5 mb-0 font-weight-bold" id="visitor">0</div>
+                                        <div class="h5 mb-0 font-weight-bold"><span class="website-counter">0</span></div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fa-solid fa-eye fa-2xl"></i>
@@ -418,7 +465,7 @@
                                         <div class="h5 mb-0 font-weight-bold" ><%= RequestToday %></div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fa fa-battery-full fa-2xl" ></i>
+                                        <i class="fa fa-ticket fa-2xl" ></i>
                                     </div>
                                 </div>
                             </div>
@@ -434,7 +481,7 @@
                                         <div class="h5 mb-0 font-weight-bold" ><%= limit %></div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fa fa-battery-full fa-2xl" ></i>
+                                        <i class="fa fa-bolt fa-2xl" ></i>
                                     </div>
                                 </div>
                             </div>
@@ -450,7 +497,7 @@
                                         <div class="h5 mb-0 font-weight-bold" ><%= apikey %></div>
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fa fa-battery-full fa-2xl" ></i>
+                                        <i class="fa fa-key fa-2xl" ></i>
                                     </div>
                                 </div>
                             </div>
@@ -485,7 +532,7 @@
 
                                     </div>
                                     <div class="col-auto">
-                                        <i class="fa-solid fa-calendar fa-2xl"></i>
+                                        <i class="fa-solid fa-clock fa-2xl"></i>
                                     </div>
                                 </div>
                             </div>
@@ -508,8 +555,8 @@
                         <div class="col-lg-12 text-center">
                             Contact Me
                             <p>
-                                <a href="https://github.com/AlipBot" class="btn btn-primary btn-sm mr-2" target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;Github</a>
-                                <a href="https://instagram.com/m_aliff229" class="btn btn-primary btn-sm ml-2" target="_blank"><i class="fab fa-fw fa-instagram"></i>&nbsp;Instagram</a>
+                                <a href="https://github.com/Kira-Master" class="btn btn-primary btn-sm mr-2" target="_blank"><i class="fab fa-fw fa-github"></i>&nbsp;Github</a>
+                                <a href="https://instagram.com/paujikerenbanget" class="btn btn-primary btn-sm ml-2" target="_blank"><i class="fab fa-fw fa-instagram"></i>&nbsp;Instagram</a>
                             </p>
                         </div>
                     </div>
@@ -521,7 +568,7 @@
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
                         Made with <i class="fa fa-heart"></i> by
-                        <a href="https://github.com/AlipBot" target="_blank" style="color: rgb(255, 234, 0);">AlipBot🇲🇾</a>
+                        <a href="https://github.com/Kira-Master" target="_blank" style="color: rgb(255, 234, 0);">Kira-Master</a>
                         </span>
                     </div>
                 </div>

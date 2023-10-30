@@ -1,9 +1,19 @@
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Modules ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
+__path = process.cwd()
 require('../settings')
 const express = require('express')
 const translate = require('translate-google')
+const fs = require('fs')
 const alip = require("../lib/listdl")
+const sanz = require("../lib/sanzyy-api")
+const { toanime, tozombie } = require("../lib/turnimg.js")
+const request = require('request')
+const axios = require('axios')
+const { openai } = require("../lib/openai.js")
+const fetch = require('node-fetch')
+const dylux = require('api-dylux')
+const sanzyy = require('sanzyy-api')
 const textto = require('soundoftext-js')
 const googleIt = require('google-it')
 const { shortText } = require("limit-text-js")
@@ -55,11 +65,11 @@ async function cekKey(req, res, next) {
 
     let db = await User.findOne({apikey: apikey});
     if(db === null) {
-		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Tidak Wujud"})  
+		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Invalid"})  
 		} else if(!db.isVerified) {
-				return res.json({ status : false, creator : `${creator}`, message : "[!] Sila Verify Email dulu sebelum guna apikey"})  
+				return res.json({ status : false, creator : `${creator}`, message : "[!] Verify your email before use feature!"})  
 			} else if(db.limitApikey === 0) {
-				return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Sudah Habis"})  
+				return res.json({ status : false, creator : `${creator}`, message : "[!] Limit habis, tunggu 24 jam!"})  
 			}else{
         return next();
     }
@@ -70,7 +80,87 @@ async function limitapikey(apikey) {
        await User.findOneAndUpdate({apikey: apikey},{$inc: { limitApikey: -1}},{upsert: true,new: true})
 }
 
+var error = __path + '/view/error.html' // Error
+//―――――――――――――――――――――――――――――――――――――――――― ┏  AI  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
+router.get('/api/ai/bard', cekKey, async (req, res, next) => {
+  var text = req.query.text
+  if (!text) return res.json({status: false, creator: creator, message: "[!] masukan parameter text"})
+    axios.get(`https://site.zexxa.tech/api/ai/bard?text=${text}&apikey=Zexxabot`)
+  .then(async data => {
+    var message = data.data.result
+    res.json({
+      status: true,      
+      creator: creator,      
+      result: message
+    })
+  }).catch(e => {
+    console.error(e);
+    res.sendFile(error)
+  })
+})
+router.get('/api/ai/text2img', cekKey, async (req, res, next) => {
+	var q = req.query.query
+	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.ai.textToImage(q).then( async data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	var url = data.url
+  let ambil = await axios.get(url, {responseType: 'arraybuffer'})
+  fs.writeFileSync(__path+"/tmp/diffusion.jpg", ambil.data)
+  res.sendFile(__path+"/tmp/diffusion.jpg")
+	/*res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	url
+	})*/
+	//console.log(data)
+	/*var buffer = Buffer.from(data, 'binary')
+	fs.writeFileSync(__path+'/tmp/diffusion.jpg', buffer)
+	res.sendFile(__path+'/tmp/diffusion.jpg')*/
+	})
+	 .catch(e => {
+		 console.error(e);
+		res.json(loghandler.error)
+		 
+})
+})
 
+router.get('/api/ai/openai', cekKey, async (req, res, next) => {
+  var q = req.query.text
+  if(!q) return res.json({ status: false, creator: creator, message: "[!] masukan parameter text!"})
+fetch(encodeURI(`https://vihangayt.me/tools/chatgpt4?q=${q}`))
+  .then(response => response.json())
+  .then(async data => {
+    var message = data.data
+    res.json({
+      status: true,
+      creator: creator,
+      result: message
+    })
+  }).catch(e => {
+    console.log(e);
+    res.sendFile(error)
+  })
+})
+
+router.get('/api/ai/zexxaai', cekKey, async (req, res, next) => {
+	var q = req.query.text
+	if (!q ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+openai(q, 'Date.now()').then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		 console.error(e);
+		res.json(loghandler.error)
+		 
+})
+})
 
 //―――――――――――――――――――――――――――――――――――――――――― ┏  Dowloader  ┓ ―――――――――――――――――――――――――――――――――――――――――― \\
 
@@ -80,6 +170,92 @@ router.get('/api/dowloader/fbdown', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
 alip.fbdown(url).then(data => {
 	if (!data.Normal_video ) return res.json(loghandler.noturl)
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/downloader/filmapikdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.search.filmApikDl(url).then(data => {
+	if (!data) return res.json(loghandler.noturl)
+	limitapikey(req.query.apikey)
+  var url = data.Url
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	url
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/xnxxdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.xnxxdl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan!"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.sendFile(error)
+})
+})
+
+router.get('/api/dowloader/xvideosdl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.xvideosdl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/dowloader/threads', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+sanzyy.downloader.threads(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	data
+	})
+	})
+	 .catch(e => {
+		res.sendFile(error)
+})
+})
+
+router.get('/api/dowloader/gdrivedl', cekKey, async (req, res, next) => {
+	var url = req.query.url
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})  
+dylux.GDriveDl(url).then(data => {
+	if(!data) return res.json({ status: false, creator: creator, message: "[!] data tidak ditemukan"})
 	limitapikey(req.query.apikey)
 	res.json({
 	status: true,
@@ -132,13 +308,16 @@ router.get('/api/dowloader/igstorydowloader', cekKey, async (req, res, next) => 
 	var username = req.query.username
 	if (!username ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter username"})   
 
-	alip.igstory(username).then(async (data) => {
+	fetch('https://api.zahwazein.xyz/downloader/instagram/story?apikey=zenzkey_8bc01f5847&username='+username)
+		.then(response => response.json())
+		.then(async (data) => {
 		if (!data) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
+			var result = data.result
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: data
+			result: result
 	    })
 	})
 })
@@ -149,13 +328,16 @@ router.get('/api/dowloader/igdowloader', cekKey, async (req, res, next) => {
 	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})   
 	if (!/^((https|http)?:\/\/(?:www\.)?instagram\.com\/(p|tv|reel|stories)\/([^/?#&]+)).*/i.test(url)) return res.json(loghandler.noturl)
 
-	alip.igdl(url).then(async (data) => {
+	fetch('https://api.akuari.my.id/downloader/igdl2?link=' + url)
+		.then(response => response.json())
+		.then(async (data) => {
 		if (!data ) return res.json(loghandler.instgram) 
 		limitapikey(req.query.apikey)
+			var result = data.respon
 		res.json({
 			status: true,
 	        creator: `${creator}`,
-			result: data
+			result: result
 	    })
 	}).catch(e => {
 		res.json(loghandler.noturl)
@@ -252,11 +434,7 @@ router.get('/api/dowloader/zippyshare', cekKey, async (req, res, next) => {
 	alip.zippyshare(url).then(async (data) => {
 		if (!data ) return res.json(loghandler.noturl)
 		limitapikey(req.query.apikey)
-		res.json({
-			status: true,
-	        creator: `${creator}`,
-			result: data
-	    })
+		res.sendFile(error)
 	}).catch(e => {
 		res.json(loghandler.noturl)
     })
@@ -846,6 +1024,137 @@ alip.linkwa(text1).then((data) =>{
     })
 })
 
+router.get('/api/search/filmapiks', cekKey, async (req, res, next) => {
+	var url = req.query.query
+	if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})  
+sanz.search.filmApikS(url).then(data => {
+	if (data.status == false) return res.sendFile(error)
+	limitapikey(req.query.apikey)
+  var result = data.data
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result:	result
+	})
+	})
+	 .catch(e => {
+		res.json(loghandler.error)
+})
+})
+
+router.get('/api/search/xnxxsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.xnxxSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+	var result = data.result
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: result
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/xvideossearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.xvideosSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/lyrics', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.lyrics(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/wallpaper', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.wallpaper(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/scsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.scsearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/npmsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.npmSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
+router.get('/api/search/phsearch', cekKey, async (req, res, next) => {
+	var text1 = req.query.query
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter query"})   
+dylux.phSearch(text1).then((data) =>{ 
+	if (!data ) return res.json(loghandler.notfound)
+	limitapikey(req.query.apikey)
+    res.json({
+	status: true,
+	creator: `${creator}`,
+	result: data
+    })
+}).catch((err) =>{
+       res.sendFile(error)
+    })
+})
+
 router.get('/api/search/pinterest', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
@@ -1042,6 +1351,188 @@ router.get('/api/randomgambar/couplepp', cekKey, async (req, res, next) => {
 
 })
 
+router.get('/api/randomgambar/amongus', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/among.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/animegif', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/animegif.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/patrick', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/patrick.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/patrickgif', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/patrickgif.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/animestick', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/animestick.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/dinokuning', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/dinokuning.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/doge', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/doge.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/kawanspongebob', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/kawanspongebob.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/manusialidi', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/maanusialidi.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/mukalu', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/mukalu.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/paimon', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/paimon.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/rabbit', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/rabbit.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/random', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/random.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
+
+router.get('/api/randomgambar/neko', cekKey, async (req, res, next) => {
+  try {
+    sanz.random.anime.neko()
+    .then(async data => {
+      var img = data.url
+      let buff = await axios.get(img, {responseType: 'arraybuffer'})
+      //let ubah = Buffer.from(buff, 'binary')
+      fs.writeFileSync(__path+'/tmp/neko.jpg', buff.data)
+res.sendFile(__path+'/tmp/neko.jpg')
+    })
+  } catch (error) {
+    res.sendFile(error)
+  }
+})
+
+router.get('/api/randomgambar/spongebob', cekKey, async (req, res, next) => {
+	let resultt = await fetchJson('https://raw.githubusercontent.com/Kira-Master/database/main/sticker/spongebob.json')
+	let random = resultt[Math.floor(Math.random() * resultt.length)]
+	limitapikey(req.query.apikey)
+	res.json({
+	status: true,
+	creator: `${creator}`,
+		result: random
+	})
+
+})
 
 router.get('/api/randomgambar/dadu', cekKey, async (req, res, next) => {
 
@@ -1623,7 +2114,7 @@ router.get('/api/linkshort/tinyurlwithalias', cekKey, async (req, res, next) => 
 	if (!alias ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter alias"})  
 
     var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 	const data = { 'url': link, 'alias': shortText(alias, 30) }
 
@@ -1799,6 +2290,62 @@ router.get('/api/tools/ebinary', cekKey, async (req, res, next) => {
 		})
 })
 
+router.get('/api/tools/remini', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if(!url) return res.json({ status: false, creator: creator, message: "[!] masukan parameter url!"})
+  sanz.tools.enhanceImg(url)
+  .then(async data => {
+    res.json({
+      status: true,
+      creator: creator,
+      result: data
+    })
+  }).catch(e => {
+    res.sendFile(error)
+  })
+})
+
+router.get('/api/tools/removebg', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if (!url) return res.json({ status: false, creator: creator, message: '[!] Masukan parameter url!'})
+  axios.get(`https://xzn.wtf/api/removebg?url=${url}&apikey=zexxabot`, {responseType: 'arraybuffer'})
+  .then(data => {
+    fs.writeFileSync(__path+"/tmp/nobg.png", data.data)
+res.sendFile(__path+"/tmp/nobg.png")
+    //console.log(data.data)
+  }).catch(e => {
+    res.sendFile(error)
+  })
+})
+
+router.get('/api/tools/tozombie', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if(!url) return res.json({ status: false, creator: creator, message: "[!] masukan parameter url!"})
+  try {
+    tozombie(url)
+    .then(async data => {
+      let ambil = await axios.get(data.image_data, {responseType: 'arraybuffer'})
+      fs.writeFileSync(__path+"/tmp/tozombi.jpg", ambil.data)
+      res.sendFile(__path+"/tmp/tozombi.jpg")
+    })
+  } catch (error) {
+    res.sendFile(error)
+  }
+})
+router.get('/api/tools/toanime', cekKey, async (req, res, next) => {
+  var url = req.query.url
+  if(!url) return res.json({ status: false, creator: creator, message: "[!] Masukan parameter url!"})
+  try {
+    toanime(url)
+    .then(async data => {
+      let ambil = await axios.get(data.image_data, { responseType: 'arraybuffer' })
+     fs.writeFileSync(__path+"/tmp/toanime.jpg", ambil.data)
+   res.sendFile(__path+"/tmp/toanime.jpg")
+    })
+  } catch (error) {
+    res.sendFile(error)
+  }
+})
 router.get('/api/tools/debinary', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
